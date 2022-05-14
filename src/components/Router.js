@@ -6,6 +6,7 @@ import Challenge from 'routes/Challenge';
 import History from 'routes/History';
 import Home from 'routes/Home';
 import Login from 'routes/Login';
+import Signup from 'routes/Signup';
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -13,7 +14,7 @@ const AppRouter = ({ isLoggedIn }) => {
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route exact path="/" element={<Habit />} />
+            <Route exact path="/habit" element={<Habit />} />
             <Route exact path="/goal" element={<Goal />} />
             <Route exact path="/challenge" element={<Challenge />} />
             <Route exact path="/history" element={<History />} />
@@ -22,6 +23,7 @@ const AppRouter = ({ isLoggedIn }) => {
           <>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
           </>
         )}
       </Routes>

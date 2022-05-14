@@ -2,16 +2,16 @@ import AuthForm from 'components/AuthForm';
 import GoogleAuth from 'components/GoogleAuth';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
   return (
     <div>
-      <AuthForm isNewAccount={false} />
+      <AuthForm isNewAccount={true} />
       <span>or</span>
       <GoogleAuth />
-      <span>Don't have an account?</span>
-      <Link to="/signup">Create an account</Link>
+      <span>Already have an account?</span>
+      <Link to="/login">Log in</Link>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
