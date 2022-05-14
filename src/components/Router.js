@@ -7,10 +7,12 @@ import History from 'routes/History';
 import Home from 'routes/Home';
 import Login from 'routes/Login';
 import Signup from 'routes/Signup';
+import SideNav from './SideNav';
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
     <Router>
+      {isLoggedIn && <SideNav />}
       <Routes>
         {isLoggedIn ? (
           <>
