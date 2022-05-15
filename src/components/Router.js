@@ -9,7 +9,7 @@ import Login from 'routes/Login';
 import Signup from 'routes/Signup';
 import SideNav from './SideNav';
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <Router>
       {isLoggedIn && <SideNav />}
@@ -17,7 +17,7 @@ const AppRouter = ({ isLoggedIn }) => {
         {isLoggedIn ? (
           <>
             <Route exact path="/habit" element={<Habit />} />
-            <Route exact path="/goal" element={<Goal />} />
+            <Route exact path="/goal" element={<Goal userObj={userObj} />} />
             <Route exact path="/challenge" element={<Challenge />} />
             <Route exact path="/history" element={<History />} />
           </>
