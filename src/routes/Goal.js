@@ -32,7 +32,11 @@ const Goal = ({ userObj }) => {
       <GoalForm userObj={userObj} />
       <div>
         {goals.map((goal) => (
-          <GoalCard key={goal.id} goalObj={goal} />
+          <GoalCard
+            key={goal.id}
+            goalObj={goal}
+            isOwner={goal.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
