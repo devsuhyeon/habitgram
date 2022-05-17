@@ -18,7 +18,11 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
           <>
             <Route exact path="/habit" element={<Habit />} />
             <Route exact path="/goal" element={<Goal userObj={userObj} />} />
-            <Route exact path="/challenge" element={<Challenge />} />
+            <Route
+              exact
+              path="/challenge"
+              element={<Challenge userObj={userObj} />}
+            />
             <Route exact path="/history" element={<History />} />
           </>
         ) : (
