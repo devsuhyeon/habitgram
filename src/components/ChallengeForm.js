@@ -87,7 +87,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
           <option value={'diet'}>Diet</option>
           <option value={'hobby'}>Hobby</option>
           <option value={'study'}>Study</option>
-          <option value={'self-care'}>Self-care</option>
+          <option value={'selfcare'}>Self-care</option>
           <option value={'others'}>Others</option>
         </select>
         <label htmlFor="startDate">Start date</label>

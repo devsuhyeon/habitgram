@@ -1,9 +1,25 @@
+import ChallengeCard from 'components/ChallengeCard';
 import ChallengeForm from 'components/ChallengeForm';
-import React, { useState } from 'react';
+import { dbService } from 'fbase';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 
 const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
+  const [challenges, setChallenges] = useState([]);
+  useEffect(() => {
+    // Get challenges from database
+    const q = query(collection(dbService, 'challenge'));
+    onSnapshot(q, (snapshot) => {
+      const challengeArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setChallenges(challengeArr);
+    });
+  }, []);
+
   const onCreateClick = (event) => {
     event.preventDefault();
     setCreating(true);
@@ -41,6 +57,11 @@ const Challenge = ({ userObj }) => {
         <button>Study</button>
         <button>Self-care</button>
         <button>Others</button>
+      </div>
+      <div>
+        {challenges.map((challenge) => (
+          <ChallengeCard key={challenge.id} challengeObj={challenge} />
+        ))}
       </div>
     </div>
   );
