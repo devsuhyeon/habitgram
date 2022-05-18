@@ -6,6 +6,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
   const [category, setCategory] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [days, setDays] = useState('');
   const [frequency, setFrequency] = useState('');
   const [description, setDescription] = useState('');
 
@@ -29,16 +30,27 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
     }
   };
 
+  const getDays = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const diffDate = endDate.getTime() - startDate.getTime();
+    return diffDate / (1000 * 3600 * 24);
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
+    setDays(getDays(startDate, endDate));
     const challengeObj = {
       title,
       category,
       startDate,
       endDate,
+      days,
       frequency,
       description,
+      createdAt: Date.now(),
       creatorId: userObj.uid,
+      status: 'scheduled',
     };
 
     try {
