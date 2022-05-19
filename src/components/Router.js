@@ -3,9 +3,11 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Habit from 'routes/Habit';
 import Goal from 'routes/Goal';
 import Challenge from 'routes/Challenge';
+import ChallengeGroup from 'routes/ChallengeGroup';
 import History from 'routes/History';
 import Home from 'routes/Home';
 import Login from 'routes/Login';
+import MyChallenge from 'routes/MyChallenge';
 import Signup from 'routes/Signup';
 import SideNav from './SideNav';
 
@@ -22,6 +24,16 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               exact
               path="/challenge"
               element={<Challenge userObj={userObj} />}
+            />
+            <Route
+              exact
+              path="/challenge/mychallenge/:uid"
+              element={<MyChallenge userObj={userObj} />}
+            />
+            <Route
+              exact
+              path="/challenge/ChallengeGroup:challengeId"
+              element={<ChallengeGroup />}
             />
             <Route exact path="/history" element={<History />} />
           </>

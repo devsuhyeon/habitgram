@@ -5,6 +5,7 @@ import { dbService } from 'fbase';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
@@ -54,7 +55,9 @@ const Challenge = ({ userObj }) => {
       <div>
         <h2>Challenge</h2>
         <button>
-          My Challenge <HiOutlineChevronRight />
+          <Link to={`/challenge/mychallenge/${userObj.uid}`}>
+            My Challenge <HiOutlineChevronRight />
+          </Link>
         </button>
       </div>
       <div>
