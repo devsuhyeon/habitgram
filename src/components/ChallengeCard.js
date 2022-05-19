@@ -1,35 +1,18 @@
+import CategoryImg from './CategoryImg';
 import React from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
-import dietImg from 'img/challengeImg/diet.jpg';
-import hobbyImg from 'img/challengeImg/hobby.jpg';
-import othersImg from 'img/challengeImg/others.jpg';
-import routineImg from 'img/challengeImg/routine.jpg';
-import selfcareImg from 'img/challengeImg/selfcare.jpg';
-import studyImg from 'img/challengeImg/study.jpg';
-import workoutImg from 'img/challengeImg/workout.jpg';
 
-const ChallengeCard = ({ challengeObj }) => {
-  const getCategoryImg = () => {
-    switch (challengeObj.category) {
-      case 'diet':
-        return dietImg;
-      case 'hobby':
-        return hobbyImg;
-      case 'others':
-        return othersImg;
-      case 'routine':
-        return routineImg;
-      case 'self-care':
-        return selfcareImg;
-      case 'study':
-        return studyImg;
-      case 'workout':
-        return workoutImg;
-    }
+const ChallengeCard = ({ challengeObj, onCardClick }) => {
+  const onCardOpen = () => {
+    // Pass the clicked card obj to challenge.js
+    onCardClick(challengeObj);
   };
+
   return (
-    <div>
-      <img src={getCategoryImg()}></img>
+    <div onClick={onCardOpen}>
+      <div>
+        <CategoryImg challengeObj={challengeObj} />
+      </div>
       <div>
         <button>{challengeObj.category}</button>
         <button>{challengeObj.frequency}</button>

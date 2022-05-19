@@ -48,6 +48,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
       days,
       frequency,
       description,
+      participants: 1,
       createdAt: Date.now(),
       creatorId: userObj.uid,
       status: 'scheduled',

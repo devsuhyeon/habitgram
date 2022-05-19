@@ -1,4 +1,5 @@
 import ChallengeCard from 'components/ChallengeCard';
+import ChallengeCardDetail from 'components/ChallengeCardDetail';
 import ChallengeForm from 'components/ChallengeForm';
 import { dbService } from 'fbase';
 import { collection, onSnapshot, query } from 'firebase/firestore';
@@ -8,6 +9,7 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
   const [challenges, setChallenges] = useState([]);
+  const [openedCard, setOpenedCard] = useState('');
   useEffect(() => {
     // Get challenges from database
     const q = query(collection(dbService, 'challenge'));
@@ -18,15 +20,26 @@ const Challenge = ({ userObj }) => {
       }));
       setChallenges(challengeArr);
     });
-  }, []);
+  }, [openedCard]);
 
   const onCreateClick = (event) => {
     event.preventDefault();
     setCreating(true);
   };
+
   const onCreateCancelClick = (event) => {
     event.preventDefault();
     setCreating(false);
+  };
+
+  const onCardClick = (challengeObj) => {
+    // Get clicked challenge obj from challengeCard.js and set it to openedCard
+    setOpenedCard(challengeObj);
+  };
+
+  const onCardCloseClick = () => {
+    // Make openedCard empty when the card is closed
+    setOpenedCard('');
   };
 
   return (
@@ -60,8 +73,21 @@ const Challenge = ({ userObj }) => {
       </div>
       <div>
         {challenges.map((challenge) => (
-          <ChallengeCard key={challenge.id} challengeObj={challenge} />
+          <ChallengeCard
+            key={challenge.id}
+            challengeObj={challenge}
+            onCardClick={onCardClick}
+          />
         ))}
+      </div>
+      <div>
+        {/* // Open card clicked */}
+        {openedCard && (
+          <ChallengeCardDetail
+            challengeObj={openedCard}
+            onCardCloseClick={onCardCloseClick}
+          />
+        )}
       </div>
     </div>
   );
