@@ -1,10 +1,40 @@
 import CategoryImg from './CategoryImg';
-import React from 'react';
+import { dbService } from 'fbase';
+import { doc, updateDoc } from 'firebase/firestore';
 import { MdClose } from 'react-icons/md';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ChallengeCardDetail = ({ challengeObj, onCardCloseClick }) => {
+const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
+  const navigate = useNavigate();
+  const challengeRef = doc(dbService, 'challenge', challengeObj.id);
   const onCardClose = () => {
     onCardCloseClick();
+  };
+
+  const onParticipateClick = async () => {
+    const ok = window.confirm(
+      `Do you want to participate in "${challengeObj.title}" challenge?`
+    );
+    if (ok) {
+      // update the number of participants in challenge database
+      await updateDoc(challengeRef, {
+        participants: challengeObj.participants + 1,
+      });
+
+      // update participants list in challenge database
+      await updateDoc(challengeRef, {
+        participants: [userObj.uid, ...challengeObj.participantsList],
+      });
+
+      // update participating challenges in userObj
+      userObj.participatingChallenges = [
+        challengeObj,
+        ...userObj.participatingChallenges,
+      ];
+
+      navigate(`/challenge/challengegroup/${challengeObj.id}`);
+    }
   };
   return (
     <div>
@@ -42,7 +72,7 @@ const ChallengeCardDetail = ({ challengeObj, onCardCloseClick }) => {
         <span>Challenge description</span>
         <span>{challengeObj.description}</span>
       </div>
-      <input type="submit" value="Participate" />
+      <button onClick={onParticipateClick}>Participate</button>
     </div>
   );
 };

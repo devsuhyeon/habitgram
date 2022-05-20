@@ -4,7 +4,7 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 
 const ChallengeCard = ({ challengeObj, onCardClick }) => {
   const onCardOpen = () => {
-    // Pass the clicked card obj to challenge.js
+    // Pass the clicked card obj
     onCardClick(challengeObj);
   };
 

@@ -2,7 +2,7 @@ import ChallengeCard from 'components/ChallengeCard';
 import ChallengeCardDetail from 'components/ChallengeCardDetail';
 import ChallengeForm from 'components/ChallengeForm';
 import { dbService } from 'fbase';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
   const [challenges, setChallenges] = useState([]);
   const [openedCard, setOpenedCard] = useState('');
+
   useEffect(() => {
     // Get challenges from database
     const q = query(collection(dbService, 'challenge'));
@@ -87,6 +88,7 @@ const Challenge = ({ userObj }) => {
         {/* // Open card clicked */}
         {openedCard && (
           <ChallengeCardDetail
+            userObj={userObj}
             challengeObj={openedCard}
             onCardCloseClick={onCardCloseClick}
           />
