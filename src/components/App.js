@@ -10,7 +10,11 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          participatingChallenges: [],
+        });
       } else {
         setIsLoggedIn(false);
       }
