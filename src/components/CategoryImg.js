@@ -17,7 +17,7 @@ const CategoryImg = ({ challengeObj }) => {
         return othersImg;
       case 'routine':
         return routineImg;
-      case 'self-care':
+      case 'selfcare':
         return selfcareImg;
       case 'study':
         return studyImg;
