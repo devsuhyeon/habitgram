@@ -6,8 +6,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
+  console.log(userObj.DBid);
   const navigate = useNavigate();
   const challengeRef = doc(dbService, 'challenge', challengeObj.id);
+  const userRef = doc(dbService, 'user', userObj.DBid);
   const onCardClose = () => {
     onCardCloseClick();
   };
@@ -25,6 +27,14 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
       // update participants list in challenge database
       await updateDoc(challengeRef, {
         participants: [userObj.uid, ...challengeObj.participantsList],
+      });
+
+      // update participants list in challenge database
+      await updateDoc(userRef, {
+        participatingChallenges: [
+          challengeObj,
+          ...userObj.participatingChallenges,
+        ],
       });
 
       // update participating challenges in userObj
