@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import AppRouter from 'components/Router';
-import { authService } from 'fbase';
+import { authService, dbService } from 'fbase';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [init, setInit] = useState(false);
@@ -10,10 +11,20 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
-        setUserObj({
-          displayName: user.displayName,
-          uid: user.uid,
-          participatingChallenges: [],
+
+        // Get user data from database
+        getUserFromDB(user).then((userDB) => {
+          if (!userDB) {
+            // New user
+            addNewUserToDB(user);
+            // Read DB agian to get DBid of new user
+            getUserFromDB(user).then((newUserDB) => {
+              settingUserObj(newUserDB);
+            });
+          } else {
+            // Existing user
+            settingUserObj(userDB);
+          }
         });
       } else {
         setIsLoggedIn(false);
@@ -21,6 +32,43 @@ function App() {
       setInit(true);
     });
   }, []);
+
+  const getUserFromDB = async (user) => {
+    let userDB;
+    const q = query(
+      collection(dbService, 'user'),
+      where('uid', '==', user.uid)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      userDB = { id: doc.id, ...doc.data() };
+    });
+    return userDB;
+  };
+
+  const addNewUserToDB = async (user) => {
+    try {
+      const newUserObj = {
+        displayName: user.displayName,
+        uid: user.uid,
+        participatingChallenges: [],
+      };
+      // Add new user to database
+      await addDoc(collection(dbService, 'user'), newUserObj);
+    } catch (e) {
+      console.error('Error adding userObj to user database: ', e);
+    }
+  };
+
+  const settingUserObj = (userDB) => {
+    setUserObj({
+      DBid: userDB.id,
+      displayName: userDB.displayName,
+      uid: userDB.uid,
+      participatingChallenges: userDB.participatingChallenges,
+    });
+  };
+
   return (
     <>
       {init ? (
