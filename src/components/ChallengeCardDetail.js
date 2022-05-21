@@ -6,7 +6,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
-  console.log(userObj.DBid);
   const navigate = useNavigate();
   const challengeRef = doc(dbService, 'challenge', challengeObj.id);
   const userRef = doc(dbService, 'user', userObj.DBid);
