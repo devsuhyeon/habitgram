@@ -33,7 +33,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <Route
               exact
               path="/challenge/challengegroup/:challengeId"
-              element={<ChallengeGroup />}
+              element={<ChallengeGroup userObj={userObj} />}
             />
             <Route exact path="/history" element={<History />} />
           </>

@@ -67,6 +67,7 @@ function App() {
       displayName: userDB.displayName,
       uid: userDB.uid,
       participatingChallenges: userDB.participatingChallenges,
+      userPosts: userDB.userPosts,
     });
   };
 
