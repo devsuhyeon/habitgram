@@ -1,5 +1,13 @@
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 import { dbService } from 'fbase';
-import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
 const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
   const [title, setTitle] = useState('');
@@ -9,6 +17,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
   const [days, setDays] = useState('');
   const [frequency, setFrequency] = useState('');
   const [description, setDescription] = useState('');
+  const userRef = doc(dbService, 'user', userObj.DBid);
 
   const onChange = (event) => {
     const {
@@ -61,6 +70,31 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
     } catch (e) {
       console.error('Error adding document: ', e);
     }
+
+    // Read challenge database to get challenge obj with challenge DBid
+    let challengeObjFromDB;
+    const q = query(
+      collection(dbService, 'challenge'),
+      where('createdAt', '==', challengeObj.createdAt)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      challengeObjFromDB = { id: doc.id, ...doc.data() };
+    });
+
+    // update participating challenges in user database
+    await updateDoc(userRef, {
+      participatingChallenges: [
+        challengeObjFromDB,
+        ...userObj.participatingChallenges,
+      ],
+    });
+
+    // update participating challenges in userObj
+    userObj.participatingChallenges = [
+      challengeObjFromDB,
+      ...userObj.participatingChallenges,
+    ];
 
     setTitle('');
     setCategory('');
