@@ -52,6 +52,7 @@ function App() {
         displayName: user.displayName,
         uid: user.uid,
         participatingChallenges: [],
+        userPosts: [],
       };
       // Add new user to database
       await addDoc(collection(dbService, 'user'), newUserObj);
