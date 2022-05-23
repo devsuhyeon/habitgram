@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { MdDelete } from 'react-icons/md';
+import ReportForm from './ReportForm';
 
-const Post = ({ post }) => {
+const Post = ({ userObj, post }) => {
+  const [reporting, setReporting] = useState(false);
+
+  const onReportClick = () => {
+    setReporting(true);
+  };
+
+  const onReportCancel = (event) => {
+    event.preventDefault();
+    setReporting(false);
+  };
+
+  const onReportSubmit = () => {
+    setReporting(false);
+  };
+
   return (
     <div>
       <div>
@@ -25,7 +41,15 @@ const Post = ({ post }) => {
       </div>
       <img src={post.previewUrl} alt="picture" />
       <span>{post.comment}</span>
-      <button>Report</button>
+      <button onClick={onReportClick}>Report</button>
+      {reporting && (
+        <ReportForm
+          userObj={userObj}
+          post={post}
+          onReportCancel={onReportCancel}
+          onReportSubmit={onReportSubmit}
+        />
+      )}
     </div>
   );
 };
