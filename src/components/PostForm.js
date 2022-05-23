@@ -41,6 +41,7 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel }) => {
     previewUrl = await getDownloadURL(response.ref);
 
     const newPost = {
+      postId: uuidv4(),
       creatorId: userObj.uid,
       displayName: userObj.displayName,
       challengeId: challengeObj.id,
@@ -58,6 +59,9 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel }) => {
     await updateDoc(userRef, {
       userPosts: [newPost, ...userObj.userPosts],
     });
+
+    // Update user posts in user obj
+    userObj.userPosts = [newPost, ...userObj.userPosts];
 
     setPreview('');
     setComment('');

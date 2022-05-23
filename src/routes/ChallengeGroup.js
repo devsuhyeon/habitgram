@@ -78,7 +78,12 @@ const ChallengeGroup = ({ userObj }) => {
           </div>
           <div>
             {challengeObj.challengePosts.map((post, index) => (
-              <Post key={index} userObj={userObj} post={post} />
+              <Post
+                key={index}
+                userObj={userObj}
+                post={post}
+                challengeObj={challengeObj}
+              />
             ))}
           </div>
         </div>
