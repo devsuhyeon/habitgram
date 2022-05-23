@@ -2,7 +2,7 @@ import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
 
-const GoalForm = ({ userObj }) => {
+const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
   const [goal, setGoal] = useState('');
   const [plan, setPlan] = useState('');
   const [period, setPeriod] = useState('');
@@ -42,10 +42,10 @@ const GoalForm = ({ userObj }) => {
     setPlan('');
     setPeriod('');
     setReward('');
+
+    onGoalSubmit();
   };
-  const onCancelClick = (event) => {
-    event.preventDefault();
-  };
+
   return (
     <div>
       <h3>What goal do you want to achieve?</h3>

@@ -9,7 +9,7 @@ import {
 } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import React, { useState } from 'react';
-const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
+const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -103,6 +103,8 @@ const ChallengeForm = ({ userObj, onCreateCancelClick }) => {
     setEndDate('');
     setFrequency('');
     setDescription('');
+
+    onSubmitForm();
   };
   return (
     <div>

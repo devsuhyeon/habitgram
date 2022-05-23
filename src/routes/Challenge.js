@@ -2,7 +2,7 @@ import ChallengeCard from 'components/ChallengeCard';
 import ChallengeCardDetail from 'components/ChallengeCardDetail';
 import ChallengeForm from 'components/ChallengeForm';
 import { dbService } from 'fbase';
-import { addDoc, collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -34,6 +34,10 @@ const Challenge = ({ userObj }) => {
     setCreating(false);
   };
 
+  const onSubmitForm = () => {
+    setCreating(false);
+  };
+
   const onCardClick = (challengeObj) => {
     // Get clicked challenge obj from challengeCard.js and set it to openedCard
     setOpenedCard(challengeObj);
@@ -51,6 +55,7 @@ const Challenge = ({ userObj }) => {
         <ChallengeForm
           userObj={userObj}
           onCreateCancelClick={onCreateCancelClick}
+          onSubmitForm={onSubmitForm}
         />
       )}
       <div>

@@ -4,7 +4,7 @@ import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 import React, { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const PostForm = ({ challengeObj, userObj, onUploadCancel }) => {
+const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
   const fileInput = useRef();
   const [preview, setPreview] = useState('');
   const [comment, setComment] = useState('');
@@ -65,6 +65,8 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel }) => {
 
     setPreview('');
     setComment('');
+
+    onPostSubmit();
   };
 
   const onClearPicture = (event) => {

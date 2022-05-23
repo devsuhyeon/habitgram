@@ -6,6 +6,7 @@ import GoalCard from 'components/GoalCard';
 
 const Goal = ({ userObj }) => {
   const [goals, setGoals] = useState([]);
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
     // Get goals from database
@@ -18,8 +19,29 @@ const Goal = ({ userObj }) => {
       setGoals(goalArr);
     });
   }, []);
+
+  const onSetNewGoal = () => {
+    setCreating(true);
+  };
+
+  const onCancelClick = (event) => {
+    event.preventDefault();
+    setCreating(false);
+  };
+
+  const onGoalSubmit = () => {
+    setCreating(false);
+  };
+
   return (
     <div>
+      {creating && (
+        <GoalForm
+          userObj={userObj}
+          onCancelClick={onCancelClick}
+          onGoalSubmit={onGoalSubmit}
+        />
+      )}
       <div>
         <h2>Goals &amp; Rewards</h2>
         <h4>
@@ -27,9 +49,8 @@ const Goal = ({ userObj }) => {
           others.
         </h4>
         <h4>It helps you stay motivated and become accountable.</h4>
-        <button>Set a new goal</button>
+        <button onClick={onSetNewGoal}>Set a new goal</button>
       </div>
-      <GoalForm userObj={userObj} />
       <div>
         {goals.map((goal) => (
           <GoalCard

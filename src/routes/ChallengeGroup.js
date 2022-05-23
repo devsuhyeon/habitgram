@@ -39,6 +39,10 @@ const ChallengeGroup = ({ userObj }) => {
     setUploading(false);
   };
 
+  const onPostSubmit = () => {
+    setUploading(false);
+  };
+
   return (
     <>
       {challengeObj && (
@@ -48,6 +52,7 @@ const ChallengeGroup = ({ userObj }) => {
               challengeObj={challengeObj}
               userObj={userObj}
               onUploadCancel={onUploadCancel}
+              onPostSubmit={onPostSubmit}
             />
           )}
           <div>
