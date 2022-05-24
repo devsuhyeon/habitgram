@@ -6,28 +6,28 @@ import Post from 'components/Post';
 import PostForm from 'components/PostForm';
 import React, { useEffect, useState } from 'react';
 
+export const getChallengeObjFromDB = async (challengeId, setChallengeObj) => {
+  const q = query(collection(dbService, 'challenge'));
+  onSnapshot(q, (snapshot) => {
+    const challengeArr = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    const challengeInfo = challengeArr.filter(
+      (challenge) => challenge.id === challengeId
+    );
+    setChallengeObj(challengeInfo[0]);
+  });
+};
+
 const ChallengeGroup = ({ userObj }) => {
   const { challengeId } = useParams();
   const [challengeObj, setChallengeObj] = useState();
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    getPostsFromDB();
+    getChallengeObjFromDB(challengeId, setChallengeObj);
   }, []);
-
-  const getPostsFromDB = async () => {
-    const q = query(collection(dbService, 'challenge'));
-    onSnapshot(q, (snapshot) => {
-      const challengeArr = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      const challengeInfo = challengeArr.filter(
-        (challenge) => challenge.id === challengeId
-      );
-      setChallengeObj(challengeInfo[0]);
-    });
-  };
 
   const onUploadPicture = (event) => {
     event.preventDefault();
@@ -42,7 +42,6 @@ const ChallengeGroup = ({ userObj }) => {
   const onPostSubmit = () => {
     setUploading(false);
   };
-
   return (
     <>
       {challengeObj && (
