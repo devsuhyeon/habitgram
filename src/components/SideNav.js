@@ -47,11 +47,11 @@ const SideNav = () => {
           </Link>
         </li>
         <li>
-          <Link to="/history">
+          <Link to="/mypage">
             <span>
               <GrHistory />
             </span>
-            <span>MY HISTORY</span>
+            <span>MY PAGE</span>
           </Link>
         </li>
       </ul>
