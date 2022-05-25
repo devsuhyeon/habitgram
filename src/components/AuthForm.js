@@ -42,7 +42,7 @@ const AuthForm = ({ isNewAccount }) => {
       } else {
         data = await signInWithEmailAndPassword(authService, email, password);
       }
-      navigate('/habit');
+      navigate('/goal');
     } catch (error) {
       setError(error.message.replace('Firebase: ', ''));
       console.log(error.message);

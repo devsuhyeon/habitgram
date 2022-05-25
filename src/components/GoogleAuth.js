@@ -15,7 +15,7 @@ const GoogleAuth = () => {
       provider = new GoogleAuthProvider();
     }
     await signInWithPopup(authService, provider);
-    navigate('/habit');
+    navigate('/goal');
   };
   return (
     <button name="google" onClick={onGoogleAuth}>
