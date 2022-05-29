@@ -2,6 +2,8 @@ import AppRouter from 'components/Router';
 import { authService, dbService } from 'fbase';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
+import 'assets/styles/App.css';
+import 'assets/styles/fonts/fonts.css';
 
 function App() {
   const [init, setInit] = useState(false);

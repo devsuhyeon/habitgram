@@ -1,14 +1,15 @@
 import React from 'react';
 import { authService } from 'fbase';
 import { signOut } from 'firebase/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import styles from 'assets/styles/SideNav.module.css';
 
-import logo from 'img/logo.png';
+// icons
 import { BsCalendarWeek } from 'react-icons/bs';
-import { IoPeopleOutline } from 'react-icons/io5';
 import { FiTarget } from 'react-icons/fi';
-import { GrHistory } from 'react-icons/gr';
-import { BiUserCircle } from 'react-icons/bi';
+import { FiUser } from 'react-icons/fi';
+import { FiUsers } from 'react-icons/fi';
+import { FaUserCircle } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 
 const SideNav = () => {
@@ -19,48 +20,72 @@ const SideNav = () => {
     });
   };
   return (
-    <nav>
-      <img src={logo} alt="logo" />
-      <ul>
-        <li>
-          <Link to="/habit">
-            <span>
-              <BsCalendarWeek />
-            </span>
-            <span>HABITS</span>
-          </Link>
+    <nav className={styles['side-nav']}>
+      <div className={styles.logo}>Habitgram</div>
+      <ul className={styles.pages}>
+        <li className={styles.page}>
+          <NavLink
+            to="/goal"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles['page-link']} ${styles['page-active']}`
+                : styles['page-link']
+            }
+          >
+            <FiTarget className={styles['page-icon']} />
+            <span className={styles['page-title']}>GOALS &amp; REWARDS</span>
+          </NavLink>
         </li>
-        <li>
-          <Link to="/goal">
-            <span>
-              <FiTarget />
-            </span>
-            <span>GOALS &amp; REWARDS</span>
-          </Link>
+        <li className={styles.page}>
+          <NavLink
+            to="/habit"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles['page-link']} ${styles['page-active']}`
+                : styles['page-link']
+            }
+          >
+            <BsCalendarWeek className={styles['page-icon']} />
+            <span className={styles['page-title']}>HABITS</span>
+          </NavLink>
         </li>
-        <li>
-          <Link to="/challenge">
-            <span>
-              <IoPeopleOutline />
-            </span>
-            <span>CHALLENGE</span>
-          </Link>
+        <li className={styles.page}>
+          <NavLink
+            to="/challenge"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles['page-link']} ${styles['page-active']}`
+                : styles['page-link']
+            }
+          >
+            <FiUsers className={styles['page-icon']} />
+            <span className={styles['page-title']}>CHALLENGE</span>
+          </NavLink>
         </li>
-        <li>
-          <Link to="/mypage">
-            <span>
-              <GrHistory />
-            </span>
-            <span>MY PAGE</span>
-          </Link>
+        <li className={styles.page}>
+          <NavLink
+            to="/mypage"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles['page-link']} ${styles['page-active']}`
+                : styles['page-link']
+            }
+          >
+            <FiUser className={styles['page-icon']} />
+            <span className={styles['page-title']}>MY PAGE</span>
+          </NavLink>
         </li>
       </ul>
-      <div>
-        <span>
-          <BiUserCircle />
-        </span>
-        <span>username</span>
-        <button title="Log Out" onClick={onLogOutClick}>
+      <div className={styles.footer}>
+        <div className={styles['footer-profile']}>
+          <FaUserCircle className={styles['profile-icon']} />
+          <span className={styles['profile-displayName']}>username</span>
+        </div>
+        <button
+          title="Log Out"
+          onClick={onLogOutClick}
+          className={styles['footer-logout']}
+        >
           <FiLogOut />
         </button>
       </div>
