@@ -1,0 +1,156 @@
+/*************/
+/* Goal Card */
+/*************/
+.card {
+  display: flex;
+  width: 22rem;
+  height: 13.2rem;
+  border-radius: var(--size-border-radius-large);
+  margin-right: 1.3rem;
+  margin-bottom: 2rem;
+  box-shadow: 1px 4px 12px -1px rgba(0, 0, 0, 0.25);
+}
+
+/*********************/
+/* Goal Card - index */
+/********************/
+.card-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13%;
+  background-color: var(--color-pastel-green);
+  padding: 0.9rem 0;
+  border-top-left-radius: var(--size-border-radius-large);
+  border-bottom-left-radius: var(--size-border-radius-large);
+}
+
+.card-icon {
+  width: 1.5rem;
+  font-size: 1.1rem;
+  padding: 0;
+  margin-bottom: 0.4rem;
+}
+
+.card-edit:hover {
+  color: var(--color-white);
+}
+
+.card-delete:hover {
+  color: var(--color-white);
+}
+
+/**********************/
+/* Goal Card - header */
+/**********************/
+.card-info {
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid var(--color-light-white);
+  user-select: none;
+}
+
+.card-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 1.2rem;
+  color: var(--color-light-grey);
+  margin-right: 0.4rem;
+}
+
+.profile-username {
+  font-size: var(--font-micro);
+  font-weight: var(--weight-medium);
+}
+
+.card-date {
+  font-size: var(--font-micro);
+  font-weight: var(--weight-medium);
+  color: var(--color-medium-grey);
+}
+
+/***********************/
+/* Goal Card - content */
+/***********************/
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  user-select: none;
+}
+
+.card-content-label {
+  font-size: var(--font-micro);
+  font-weight: var(--weight-medium);
+  display: block;
+}
+
+.card-content-value {
+  font-size: var(--font-micro);
+  font-weight: var(--weight-regular);
+  color: var(--color-grey);
+  margin-bottom: 0.4rem;
+}
+
+/*************************/
+/* Goal Card - edit form */
+/*************************/
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem 1rem;
+}
+
+.edit-form-btns {
+  align-self: flex-end;
+}
+
+.edit-form-btn {
+  width: 3.4rem;
+  font-size: var(--font-micro);
+  font-weight: var(--weight-medium);
+  padding: 0.2rem 0;
+  border-radius: var(--size-border-radius-small);
+}
+
+.edit-form-update {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  outline: none;
+  border: none;
+  margin-left: 0.2rem;
+  transition: all 100ms ease-in;
+}
+
+.edit-form-update:hover {
+  background-color: var(--color-light-white);
+  color: var(--color-black);
+}
+
+.edit-form-cancel {
+  transition: all 100ms ease-in;
+}
+
+.edit-form-cancel:hover {
+  font-weight: var(--weight-semi-bold);
+}
+
+.edit-form-label {
+  font-size: var(--font-micro);
+  font-weight: var(--weight-semi-bold);
+}
+.edit-form-input {
+  margin-bottom: 0.4rem;
+}

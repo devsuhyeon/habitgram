@@ -10,13 +10,14 @@
   --color-black: #0d0d0d;
 
   --color-pastel-purple: #e8dff5;
-  --color--pastel-pink: #fce1e4;
-  --color--pastel-yellow: #fcf4dd;
-  --color--pastel-green: #ddedea;
-  --color--pastel-blue: #daeaf6;
+  --color-pastel-pink: #fce1e4;
+  --color-pastel-yellow: #fcf4dd;
+  --color-pastel-green: #ddedea;
+  --color-pastel-blue: #daeaf6;
   --color-white-orange: #fff7f3;
   --color-light-orange: #ffcaaf;
-  --color-orange: #f68c70;
+  --color-orange: #ff9169;
+  --color-dark-orange: #ff7c57;
 
   /* Font size */
   --font-huge: 3rem;

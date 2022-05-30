@@ -1,0 +1,119 @@
+.page-title {
+  user-select: none;
+}
+
+.page-description {
+  font-weight: var(--weight-regular);
+  line-height: 1.5;
+  color: var(--color-grey);
+  margin-bottom: 2.2rem;
+  user-select: none;
+}
+
+.add-goal-btn {
+  width: 8rem;
+  height: 2.1rem;
+  font-size: var(--font-small);
+  font-weight: var(--weight-medium);
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  align-self: flex-end;
+  border-radius: var(--size-border-radius-regular);
+  margin-right: 1.4rem;
+  margin-bottom: 1.4rem;
+  transition: all 100ms ease-in;
+}
+
+.add-goal-btn:hover {
+  background-color: var(--color-light-white);
+  color: var(--color-black);
+}
+
+/*************/
+/* Goal Form */
+/*************/
+.goal-form-container {
+  width: 29rem;
+  height: 27rem;
+  background-color: var(--color-white);
+  border-radius: var(--size-border-radius-large);
+  padding: 2.8rem 3.4rem;
+  margin: 0 auto;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.goal-form-title {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+  margin-bottom: 1.6rem;
+  user-select: none;
+}
+
+.goal-form .label {
+  display: block;
+  font-size: var(--font-small);
+  font-weight: var(--weight-medium);
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.goal-form .input {
+  width: 100%;
+  height: 1.6rem;
+}
+
+.goal-form .btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.goal-form .btn {
+  width: 4.4rem;
+  height: 1.8rem;
+  font-size: var(--font-small);
+  font-weight: var(--weight-medium);
+  border-radius: var(--size-border-radius-small);
+  padding: 0.2rem 0;
+}
+
+.goal-form .btn.cancel {
+  transition: all 100ms ease-in;
+}
+
+.goal-form .btn.cancel:hover {
+  font-weight: var(--weight-semi-bold);
+}
+
+.goal-form .btn.submit {
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  border: none;
+  outline: none;
+  margin-left: 0.2rem;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.goal-form .btn.submit:hover {
+  color: var(--color-black);
+  background-color: var(--color-light-white);
+}
+
+/*************/
+/* Goal Cards */
+/*************/
+.cards-container {
+  position: relative;
+  top: -4rem;
+  width: 70rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  width: 70rem;
+  display: flex;
+  flex-wrap: wrap;
+}

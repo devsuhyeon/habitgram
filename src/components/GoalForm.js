@@ -1,6 +1,7 @@
 import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
+import styles from 'assets/styles/Goal.module.css';
 
 const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
   const [goal, setGoal] = useState('');
@@ -47,11 +48,16 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
   };
 
   return (
-    <div>
-      <h3>What goal do you want to achieve?</h3>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="goal">Goal</label>
+    <div className={styles['goal-form-container']}>
+      <div className={styles['goal-form-title']}>
+        What goal do you want to achieve?
+      </div>
+      <form className={styles['goal-form']} onSubmit={onSubmit}>
+        <label className={styles.label} htmlFor="goal">
+          Goal
+        </label>
         <input
+          className={styles.input}
           name="goal"
           type="text"
           placeholder=""
@@ -59,8 +65,11 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
           value={goal}
           onChange={onChange}
         ></input>
-        <label htmlFor="plan">Plan</label>
+        <label className={styles.label} htmlFor="plan">
+          Plan
+        </label>
         <input
+          className={styles.input}
           name="plan"
           type="text"
           placeholder=""
@@ -68,8 +77,11 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
           value={plan}
           onChange={onChange}
         ></input>
-        <label htmlFor="period">Period</label>
+        <label className={styles.label} htmlFor="period">
+          Period
+        </label>
         <input
+          className={styles.input}
           name="period"
           type="text"
           placeholder=""
@@ -77,8 +89,11 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
           value={period}
           onChange={onChange}
         ></input>
-        <label htmlFor="reward">Self-reward</label>
+        <label className={styles.label} htmlFor="reward">
+          Self-reward
+        </label>
         <input
+          className={styles.input}
           name="reward"
           type="text"
           placeholder=""
@@ -86,8 +101,18 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
           value={reward}
           onChange={onChange}
         ></input>
-        <button onClick={onCancelClick}>Cancel</button>
-        <input type="submit"></input>
+        <div className={styles.btns}>
+          <button
+            className={`${styles.btn} ${styles.cancel}`}
+            onClick={onCancelClick}
+          >
+            Cancel
+          </button>
+          <input
+            className={`${styles.btn} ${styles.submit}`}
+            type="submit"
+          ></input>
+        </div>
       </form>
     </div>
   );
