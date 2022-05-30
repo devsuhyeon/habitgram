@@ -22,6 +22,14 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
       setReward(value);
     }
   };
+  const getRandomColor = () => {
+    // get random color for goal card index
+    const colors = ['purple', 'pink', 'yellow', 'green', 'blue'];
+    const randomNumber = Math.floor(Math.random() * colors.length);
+    console.log(randomNumber);
+    return colors[randomNumber];
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     const goalObj = {
@@ -31,6 +39,7 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
       reward,
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      indexColor: getRandomColor(),
     };
 
     try {

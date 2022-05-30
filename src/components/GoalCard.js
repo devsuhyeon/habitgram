@@ -39,6 +39,7 @@ const GoalCard = ({ goalObj, isOwner }) => {
       setNewReward(value);
     }
   };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     // Edit goal
@@ -51,10 +52,11 @@ const GoalCard = ({ goalObj, isOwner }) => {
 
     setEditing(false);
   };
+
   return (
     <div className={styles.card}>
       {/* Goal Card */}
-      <div className={styles['card-index']}>
+      <div className={`${styles['card-index']} ${styles[goalObj.indexColor]}`}>
         {/* Goal can only be deleted and edited by creator */}
         {/* Edit button and delete button are invisible while editing */}
         {isOwner && !editing && isOwner && (
