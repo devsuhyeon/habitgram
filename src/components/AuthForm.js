@@ -6,8 +6,7 @@ import {
 } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
-import logo from 'img/logo.png';
+import styles from 'assets/styles/Login.module.css';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const AuthForm = ({ isNewAccount }) => {
@@ -45,27 +44,34 @@ const AuthForm = ({ isNewAccount }) => {
       navigate('/goal');
     } catch (error) {
       setError(error.message.replace('Firebase: ', ''));
-      console.log(error.message);
     }
   };
   return (
-    <div>
-      <Link to="/">
+    <div className={styles['auth-form-container']}>
+      <Link className={styles['previous-btn']} to="/">
         <AiOutlineArrowLeft />
       </Link>
-      <img src={logo} alt="logo" style={{ width: '300px' }} />
-      <span>{newAccount ? 'Sign Up' : 'Log In'}</span>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="email">Email</label>
+      <div className={styles.logo}>Habitgram</div>
+      <span className={styles['form-type']}>
+        {newAccount ? 'Sign Up' : 'Log In'}
+      </span>
+      <form className={styles['auth-form']} onSubmit={onSubmit}>
+        <label className={styles.label} htmlFor="email">
+          Email
+        </label>
         <input
+          className={styles.input}
           name="email"
           type="text"
           required
           value={email}
           onChange={onChange}
         ></input>
-        <label htmlFor="password">Password</label>
+        <label className={styles.label} htmlFor="password">
+          Password
+        </label>
         <input
+          className={styles.input}
           name="password"
           type="password"
           required
@@ -74,6 +80,9 @@ const AuthForm = ({ isNewAccount }) => {
         ></input>
         <span>{error}</span>
         <input
+          className={`${styles.submit} ${
+            newAccount ? styles.signup : styles.login
+          } `}
           type="submit"
           value={newAccount ? 'Create Account' : 'Log In'}
         ></input>

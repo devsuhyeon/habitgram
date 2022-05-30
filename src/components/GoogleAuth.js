@@ -3,6 +3,7 @@ import { authService } from 'fbase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import styles from 'assets/styles/Login.module.css';
 
 const GoogleAuth = () => {
   const navigate = useNavigate();
@@ -18,8 +19,12 @@ const GoogleAuth = () => {
     navigate('/goal');
   };
   return (
-    <button name="google" onClick={onGoogleAuth}>
-      <FcGoogle />
+    <button
+      className={styles['google-auth']}
+      name="google"
+      onClick={onGoogleAuth}
+    >
+      <FcGoogle className={styles['google-icon']} />
       Continue with Google
     </button>
   );
