@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CalendarDate from './CalendarDate';
-import { GrFormPrevious } from 'react-icons/gr';
-import { GrFormNext } from 'react-icons/gr';
+import { BiChevronLeft } from 'react-icons/bi';
+import { BiChevronRight } from 'react-icons/bi';
 import styles from 'assets/styles/Calendar.module.css';
 
 const Calendar = ({
@@ -65,25 +65,25 @@ const Calendar = ({
 
   return (
     <div className={styles.calendar}>
-      <div>
-        <button onClick={onPrevClick}>
-          <GrFormPrevious />
+      <div className={styles['nav']}>
+        <button className={styles['nav-btn']} onClick={onPrevClick}>
+          <BiChevronLeft />
         </button>
-        <span>
+        <span className={styles['nav-month']}>
           {months[month]} {year}
         </span>
-        <button onClick={onNextClick}>
-          <GrFormNext />
+        <button className={styles['nav-btn']} onClick={onNextClick}>
+          <BiChevronRight />
         </button>
       </div>
       <div className={styles.days}>
-        <div className={styles.day}>Sun</div>
-        <div className={styles.day}>Mon</div>
-        <div className={styles.day}>Tue</div>
-        <div className={styles.day}>Wed</div>
-        <div className={styles.day}>Thu</div>
-        <div className={styles.day}>Fri</div>
-        <div className={styles.day}>Sat</div>
+        <div className={styles.day}>S</div>
+        <div className={styles.day}>M</div>
+        <div className={styles.day}>T</div>
+        <div className={styles.day}>W</div>
+        <div className={styles.day}>T</div>
+        <div className={styles.day}>F</div>
+        <div className={styles.day}>S</div>
       </div>
       <div
         className={`${styles.dates} ${editing ? '' : styles['non-editing']}`}

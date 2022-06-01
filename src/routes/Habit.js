@@ -3,6 +3,7 @@ import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import { GrFormAdd } from 'react-icons/gr';
 import HabitCard from 'components/HabitCard';
+import styles from 'assets/styles/Habit.module.css';
 
 const Habit = ({ userObj }) => {
   const [creatingHabit, setCreatingHabit] = useState(false);
@@ -62,23 +63,46 @@ const Habit = ({ userObj }) => {
   };
 
   return (
-    <div>
+    <div className="main-page">
       <h2>Habit</h2>
-      {habits.map((habit) => (
-        <HabitCard key={habit.id} habit={habit} />
-      ))}
-      {creatingHabit ? (
-        <form onSubmit={onSubmit}>
-          <label htmlFor="habit-title">Habit Title</label>
-          <input name="habit-title" type="text" required onChange={onChange} />
-          <input type="submit" value="Add"></input>
-          <button onClick={onCancelClick}>Cancel</button>
-        </form>
-      ) : (
-        <button onClick={onCreateHabit}>
-          <GrFormAdd /> New Habit
-        </button>
-      )}
+      <div className={styles['habit-cards']}>
+        {creatingHabit ? (
+          <div className={styles['new-habit']}>
+            <form className={styles['new-habit-form']} onSubmit={onSubmit}>
+              <label className={styles.title} htmlFor="habit-title">
+                Habit Title
+              </label>
+              <input
+                className={styles.input}
+                name="habit-title"
+                type="text"
+                required
+                onChange={onChange}
+              />
+              <input
+                className={`${styles.btn} ${styles.submit}`}
+                type="submit"
+                value="Add"
+              ></input>
+              <button
+                className={`${styles.btn} ${styles.cancel}`}
+                onClick={onCancelClick}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div className={styles['new-habit']}>
+            <button className={styles['new-habit-btn']} onClick={onCreateHabit}>
+              <GrFormAdd className={styles['add-icon']} /> New Habit
+            </button>
+          </div>
+        )}
+        {habits.map((habit) => (
+          <HabitCard key={habit.id} habit={habit} />
+        ))}
+      </div>
     </div>
   );
 };

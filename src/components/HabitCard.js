@@ -4,6 +4,7 @@ import { dbService } from 'fbase';
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { MdDelete } from 'react-icons/md';
+import styles from 'assets/styles/HabitCard.module.css';
 
 const HabitCard = ({ habit }) => {
   const [editing, setEditing] = useState(false);
@@ -84,42 +85,56 @@ const HabitCard = ({ habit }) => {
   };
 
   return (
-    <div>
+    <div className={styles['habit-card']}>
       {editing ? (
-        <div>
-          <button onClick={onUpdateCard}>Update</button>
-          <button onClick={onCancelEdit}>Cancel</button>
+        <div className={styles['card-btns']}>
+          <button
+            className={`${styles['edit-btn']} ${styles.update}`}
+            onClick={onUpdateCard}
+          >
+            Update
+          </button>
+          <button
+            className={`${styles['edit-btn']} ${styles.cancel}`}
+            onClick={onCancelEdit}
+          >
+            Cancel
+          </button>
         </div>
       ) : (
-        <div>
-          <button onClick={onEditCard}>
+        <div className={styles['card-btns']}>
+          <button className={styles['card-btn']} onClick={onEditCard}>
             <HiOutlinePencilAlt />
           </button>
-          <button onClick={onDeleteCard}>
+          <button className={styles['card-btn']} onClick={onDeleteCard}>
             <MdDelete />
           </button>
         </div>
       )}
-      <div>
-        <div>
+      <div className={styles['card-contents']}>
+        <div className={styles['card-info']}>
           {editing ? (
-            <input
-              type="text"
-              value={newTitle}
-              placeholder="Edit the habit title"
-              required
-              onChange={onFormTextChange}
-            />
+            <div className={styles['card-title-edit']}>
+              <input
+                type="text"
+                value={newTitle}
+                placeholder="Edit the habit title"
+                required
+                onChange={onFormTextChange}
+              />
+            </div>
           ) : (
-            <span>{habit.title}</span>
+            <span className={styles['card-title']}>{habit.title}</span>
           )}
-          <div>
-            <div>
-              <span>Current month count:</span>
+          <div className={styles.counts}>
+            <div className={styles.count}>
+              <span className={styles['count-title']}>
+                Current month count:
+              </span>
               <span>{monthCount}</span>
             </div>
-            <div>
-              <span>Total count:</span>
+            <div className={styles.count}>
+              <span className={styles['count-title']}>Total count:</span>
               <span>{selectedDateList.length}</span>
             </div>
           </div>
