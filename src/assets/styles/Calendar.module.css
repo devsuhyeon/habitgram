@@ -1,0 +1,51 @@
+.calendar {
+  width: 16rem;
+  height: 18rem;
+  background-color: rgb(235, 235, 235);
+}
+
+.days {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.day {
+  width: calc(13rem / 7);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2rem;
+}
+
+.dates {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+
+.dates.non-editing {
+  pointer-events: none;
+}
+
+.date {
+  width: calc(13rem / 7);
+  height: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-orange);
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+.date:hover {
+  border: 0.1rem solid rgb(86, 86, 86);
+}
+
+.selected {
+  background-color: cornflowerblue;
+}

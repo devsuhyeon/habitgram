@@ -18,7 +18,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route exact path="/habit" element={<Habit />} />
+            <Route exact path="/habit" element={<Habit userObj={userObj} />} />
             <Route exact path="/goal" element={<Goal userObj={userObj} />} />
             <Route
               exact
