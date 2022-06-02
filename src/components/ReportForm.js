@@ -1,6 +1,7 @@
 import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
+import styles from 'assets/styles/ReportForm.module.css';
 
 const ReportForm = ({ userObj, post, onReportCancel, onReportSubmit }) => {
   const [reason, setReason] = useState('');
@@ -36,18 +37,31 @@ const ReportForm = ({ userObj, post, onReportCancel, onReportSubmit }) => {
     }, 2000);
   };
   return (
-    <div>
+    <div className={styles['report-form-container']}>
       {submitted ? (
-        <span>A report has been received</span>
+        <div className={styles['report-form-message']}>
+          A report has been received. Thank you
+        </div>
       ) : (
         <>
-          <span>Please provide a reason for reporting this post</span>
-          <form onSubmit={onSubmit}>
+          <span className={styles['report-form-title']}>
+            Please provide a reason for reporting this post
+          </span>
+          <form className={styles['report-form']} onSubmit={onSubmit}>
             <label htmlFor="reason">Reason</label>
-            <textarea onChange={onChange} />
-            <div>
-              <button onClick={onReportCancel}>Cancel</button>
-              <input type="submit" value="Submit" />
+            <textarea className={styles.input} onChange={onChange} />
+            <div className={styles.btns}>
+              <button
+                className={`${styles.btn} ${styles.cancel}`}
+                onClick={onReportCancel}
+              >
+                Cancel
+              </button>
+              <input
+                className={`${styles.btn} ${styles.submit}`}
+                type="submit"
+                value="Submit"
+              />
             </div>
           </form>
         </>

@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import Post from 'components/Post';
 import PostForm from 'components/PostForm';
 import React, { useEffect, useState } from 'react';
+import styles from 'assets/styles/ChallengeGroup.module.css';
+import Modal from 'components/Modal';
 
 export const getChallengeObjFromDB = async (challengeId, setChallengeObj) => {
   const q = query(collection(dbService, 'challenge'));
@@ -43,44 +45,57 @@ const ChallengeGroup = ({ userObj }) => {
     setUploading(false);
   };
   return (
-    <>
+    <div className="main-page">
       {challengeObj && (
-        <div>
+        <div className={styles['page-container']}>
           {uploading && (
-            <PostForm
-              challengeObj={challengeObj}
-              userObj={userObj}
-              onUploadCancel={onUploadCancel}
-              onPostSubmit={onPostSubmit}
-            />
+            <Modal onCancelClick={onUploadCancel}>
+              <PostForm
+                challengeObj={challengeObj}
+                userObj={userObj}
+                onUploadCancel={onUploadCancel}
+                onPostSubmit={onPostSubmit}
+              />
+            </Modal>
           )}
-          <div>
-            <Link to={`/challenge/mychallenge/${userObj.uid}`}>
+          <div className={styles['header-container']}>
+            <Link
+              to={`/challenge/mychallenge/${userObj.uid}`}
+              className={styles['previous-btn']}
+            >
               <HiOutlineChevronLeft />
             </Link>
             <h2>{challengeObj.title}</h2>
           </div>
-          <div>
+          <div className={styles['challenge-info']}>
             <div>
-              <div>
-                <span>Period</span>
-                <span>
+              <div className={styles['item']}>
+                <span className={styles['item-title']}>Period</span>
+                <span className={styles['item-value']}>
                   {challengeObj.startDate} ~ {challengeObj.endDate} (
                   {challengeObj.days} days)
                 </span>
               </div>
-              <div>
-                <span>Frequency</span>
-                <span>{challengeObj.frequency}</span>
+              <div className={styles['item']}>
+                <span className={styles['item-title']}>Frequency</span>
+                <span className={styles['item-value']}>
+                  {challengeObj.frequency}
+                </span>
               </div>
-              <div>
-                <span>Number of participants</span>
-                <span>{challengeObj.participants}</span>
+              <div className={styles['item']}>
+                <span className={styles['item-title']}>
+                  Number of participants
+                </span>
+                <span className={styles['item-value']}>
+                  {challengeObj.participants}
+                </span>
               </div>
             </div>
-            <button onClick={onUploadPicture}>Upload picture</button>
+            <button className={styles['upload-btn']} onClick={onUploadPicture}>
+              Upload picture
+            </button>
           </div>
-          <div>
+          <div className={styles.posts}>
             {challengeObj.challengePosts.map((post, index) => (
               <Post
                 key={index}
@@ -92,7 +107,7 @@ const ChallengeGroup = ({ userObj }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

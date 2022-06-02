@@ -3,6 +3,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 import React, { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import styles from 'assets/styles/PostForm.module.css';
 
 const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
   const fileInput = useRef();
@@ -76,11 +77,14 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
   };
 
   return (
-    <div>
-      <h3>Complete today's challenge with picture !</h3>
-      <form onSubmit={onSubmit}>
+    <div className={styles['post-form-container']}>
+      <div className={styles['post-form-title']}>
+        Complete today's challenge with picture !
+      </div>
+      <form className={styles['post-form']} onSubmit={onSubmit}>
         <label htmlFor="picture">Choose a picture:</label>
         <input
+          className={styles.file}
           name="picture"
           type="file"
           accept="image/*"
@@ -88,19 +92,35 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
           onChange={onFileChange}
           ref={fileInput}
         />
-        <div>
+        <div className={styles['preview-container']}>
           {preview ? (
-            <img src={preview} width="100px" height="100px" />
+            <img className={styles['preview-img']} src={preview} />
           ) : (
-            <span>Preview</span>
+            <div className={styles['preview-text']}>Preview</div>
           )}
-          <button onClick={onClearPicture}>Clear</button>
+          <button className={styles['file-clear-btn']} onClick={onClearPicture}>
+            Clear
+          </button>
         </div>
         <label htmlFor="comment">Comment</label>
-        <textarea name="comment" onChange={onCommentChange} />
-        <div>
-          <button onClick={onUploadCancel}>Cancel</button>
-          <input type="submit" value="Submit" />
+        <textarea
+          className={styles.comment}
+          name="comment"
+          maxLength="100"
+          onChange={onCommentChange}
+        />
+        <div className={styles.btns}>
+          <button
+            className={`${styles.btn} ${styles.cancel}`}
+            onClick={onUploadCancel}
+          >
+            Cancel
+          </button>
+          <input
+            className={`${styles.btn} ${styles.submit}`}
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
     </div>

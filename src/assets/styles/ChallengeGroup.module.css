@@ -1,0 +1,50 @@
+.header-container {
+  position: relative;
+}
+
+.previous-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: -3rem;
+  color: var(--color-black);
+  font-size: var(--font-medium);
+}
+
+.challenge-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.challenge-info .item {
+  margin-bottom: 0.6rem;
+}
+
+.challenge-info .item-title {
+  font-weight: var(--weight-medium);
+  margin-right: 0.6rem;
+}
+
+.upload-btn {
+  align-self: flex-end;
+  width: 8.2rem;
+  height: 2rem;
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  font-size: var(--font-tiny);
+  font-weight: var(--weight-semi-bold);
+  border-radius: var(--size-border-radius-regular);
+  transition: all 100ms ease-in;
+}
+
+.upload-btn:hover {
+  background-color: var(--color-light-white);
+  color: var(--color-black);
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1rem;
+}

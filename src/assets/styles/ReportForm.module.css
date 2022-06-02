@@ -1,0 +1,79 @@
+.report-form-container {
+  width: 32rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: var(--size-border-radius-large);
+  padding: 3rem 3.8rem;
+  margin: 0 auto;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.report-form-message {
+  font-size: var(--font-small);
+  font-weight: var(--weight-semi-bold);
+  margin: auto 0;
+}
+
+.report-form-title {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+  margin-bottom: 1.6rem;
+  user-select: none;
+}
+
+.report-form {
+  width: 100%;
+}
+
+.report-form label {
+  font-size: var(--font-small);
+  font-weight: var(--weight-medium);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.report-form .input {
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 1.8rem;
+}
+
+.report-form .btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.report-form .btn {
+  width: 4.4rem;
+  height: 1.6rem;
+  font-size: var(--font-tiny);
+  font-weight: var(--weight-semi-bold);
+  border-radius: var(--size-border-radius-small);
+  padding: 0.2rem 0;
+}
+
+.report-form .btn.cancel {
+  color: var(--color-medium-grey);
+}
+
+.report-form .btn.cancel:hover {
+  color: var(--color-black);
+}
+
+.report-form .btn.submit {
+  outline: none;
+  border: none;
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  margin-left: 0.2rem;
+  transition: all 100ms ease-in;
+  cursor: pointer;
+}
+
+.report-form .btn.submit:hover {
+  background-color: var(--color-light-white);
+  color: var(--color-black);
+}

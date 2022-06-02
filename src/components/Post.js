@@ -2,10 +2,11 @@ import { dbService, storageService } from 'fbase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { deleteObject, ref } from 'firebase/storage';
 import React, { useState } from 'react';
-import { CgProfile } from 'react-icons/cg';
-import { HiOutlinePencilAlt } from 'react-icons/hi';
+import { FaUserCircle } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import ReportForm from './ReportForm';
+import styles from 'assets/styles/Post.module.css';
+import Modal from './Modal';
 
 const Post = ({ userObj, post, challengeObj }) => {
   const [reporting, setReporting] = useState(false);
@@ -57,29 +58,35 @@ const Post = ({ userObj, post, challengeObj }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <CgProfile />
-          <div>
-            <span>{post.displayName}</span>
-            <span>{new Date(post.createdAt).toLocaleDateString()}</span>
-          </div>
+    <div className={styles.post}>
+      <div className={styles['post-header']}>
+        <FaUserCircle className={styles['profile-icon']} />
+        <div className={styles['username-date']}>
+          <span className={styles['username']}>{post.displayName}</span>
+          <span className={styles['date']}>
+            {new Date(post.createdAt).toLocaleDateString()}
+          </span>
         </div>
-        <button onClick={onPostDelete}>
+      </div>
+      <img className={styles.picture} src={post.previewUrl} alt="picture" />
+      <span className={styles.comment}>{post.comment}</span>
+      <div className={styles.btns}>
+        <button className={styles['report-btn']} onClick={onReportClick}>
+          Report
+        </button>
+        <button className={styles['delete-btn']} onClick={onPostDelete}>
           <MdDelete />
         </button>
       </div>
-      <img src={post.previewUrl} alt="picture" />
-      <span>{post.comment}</span>
-      <button onClick={onReportClick}>Report</button>
       {reporting && (
-        <ReportForm
-          userObj={userObj}
-          post={post}
-          onReportCancel={onReportCancel}
-          onReportSubmit={onReportSubmit}
-        />
+        <Modal onCancelClick={onReportCancel}>
+          <ReportForm
+            userObj={userObj}
+            post={post}
+            onReportCancel={onReportCancel}
+            onReportSubmit={onReportSubmit}
+          />
+        </Modal>
       )}
     </div>
   );
