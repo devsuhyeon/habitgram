@@ -27,6 +27,7 @@
   --font-medium: 2rem;
   --font-regular: 1.4rem;
   --font-small: 1rem;
+  --font-tiny: 0.9rem;
   --font-micro: 0.85rem;
 
   /* Font weight */
@@ -114,6 +115,6 @@ p {
 }
 
 .main-page {
-  width: 70vw;
+  width: 74rem;
   margin: 3rem 8rem;
 }
