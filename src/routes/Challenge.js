@@ -6,6 +6,8 @@ import { collection, onSnapshot, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
+import styles from 'assets/styles/Challenge.module.css';
+import Modal from 'components/Modal';
 
 const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
@@ -49,55 +51,70 @@ const Challenge = ({ userObj }) => {
   };
 
   return (
-    <div>
+    <div className="main-page">
       {/* If creating is true, the Challenge Form is shown */}
       {creating && (
-        <ChallengeForm
-          userObj={userObj}
-          onCreateCancelClick={onCreateCancelClick}
-          onSubmitForm={onSubmitForm}
-        />
+        <Modal onCancelClick={onCreateCancelClick}>
+          <ChallengeForm
+            userObj={userObj}
+            onCreateCancelClick={onCreateCancelClick}
+            onSubmitForm={onSubmitForm}
+          />
+        </Modal>
       )}
-      <div>
-        <h2>Challenge</h2>
-        <button>
-          <Link to={`/challenge/mychallenge/${userObj.uid}`}>
-            My Challenge <HiOutlineChevronRight />
+      <div className={styles.header}>
+        <h2 className={styles['page-title']}>Challenge</h2>
+        <button className={styles['my-challenge-btn']}>
+          <Link
+            to={`/challenge/mychallenge/${userObj.uid}`}
+            className={styles['my-challenge-link']}
+          >
+            My Challenge
+            <HiOutlineChevronRight className={styles['my-challenge-icon']} />
           </Link>
         </button>
       </div>
-      <div>
-        <h3>Challenge List</h3>
-        <button onClick={onCreateClick}>Create a challenge</button>
+      <h3 className={styles['challenge-list']}>Challenge List</h3>
+      <div className={styles['challenge-list-btns']}>
+        <div className={styles.categories}>
+          <button className={`${styles.category} ${styles.active} `}>
+            All
+          </button>
+          <button className={styles.category}>Routine</button>
+          <button className={styles.category}>Workout</button>
+          <button className={styles.category}>Diet</button>
+          <button className={styles.category}>Hobby</button>
+          <button className={styles.category}>Study</button>
+          <button className={styles.category}>Self-care</button>
+          <button className={styles.category}>Others</button>
+        </div>
+        <button
+          className={styles['create-challenge-btn']}
+          onClick={onCreateClick}
+        >
+          Create a challenge
+        </button>
       </div>
-      <div>
-        <button>All</button>
-        <button>Routine</button>
-        <button>Workout</button>
-        <button>Diet</button>
-        <button>Hobby</button>
-        <button>Study</button>
-        <button>Self-care</button>
-        <button>Others</button>
-      </div>
-      <div>
-        {challenges.map((challenge) => (
-          <ChallengeCard
-            key={challenge.id}
-            challengeObj={challenge}
-            onCardClick={onCardClick}
-          />
-        ))}
-      </div>
-      <div>
-        {/* // Open card clicked */}
-        {openedCard && (
-          <ChallengeCardDetail
-            userObj={userObj}
-            challengeObj={openedCard}
-            onCardCloseClick={onCardCloseClick}
-          />
-        )}
+      <div className={styles['cards-container']}>
+        <div className={styles.cards}>
+          {challenges.map((challenge) => (
+            <ChallengeCard
+              key={challenge.id}
+              challengeObj={challenge}
+              onCardClick={onCardClick}
+            />
+          ))}
+        </div>
+        <div>
+          {/* // Open card clicked */}
+          {openedCard && (
+            <ChallengeCardDetail
+              userObj={userObj}
+              challengeObj={openedCard}
+              onCardCloseClick={onCardCloseClick}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

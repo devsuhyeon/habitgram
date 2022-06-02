@@ -4,6 +4,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { MdClose } from 'react-icons/md';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from 'assets/styles/ChallengeCardDetail.module.css';
 
 const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
   const navigate = useNavigate();
@@ -46,42 +47,55 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
     }
   };
   return (
-    <div>
-      <button onClick={onCardClose}>
+    <div className={styles['card-detail']}>
+      <button className={styles['card-detail-close']} onClick={onCardClose}>
         <MdClose />
       </button>
-      <div>
-        <CategoryImg challengeObj={challengeObj} />
+      <div className={styles['card-detail-img']}>
+        <CategoryImg challengeObj={challengeObj} usage={'detail'} />
       </div>
-      <div>
-        <span>{challengeObj.title}</span>
-        <span>{challengeObj.category}</span>
+      <div className={styles['card-detail-content']}>
+        <div className={styles['title-category']}>
+          <span className={styles['title']}>{challengeObj.title}</span>
+          <span className={styles['category']}>{challengeObj.category}</span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>Creator</span>
+          <span className={styles['item-value']}>{challengeObj.creatorId}</span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>Start date</span>
+          <span className={styles['item-value']}>{challengeObj.startDate}</span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>End date</span>
+          <span className={styles['item-value']}>{challengeObj.endDate}</span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>Frequency</span>
+          <span className={styles['item-value']}>{challengeObj.frequency}</span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>
+            Current number of participants
+          </span>
+          <span className={styles['item-value']}>
+            {challengeObj.participants}
+          </span>
+        </div>
+        <div className={styles['item']}>
+          <span className={styles['item-name']}>Challenge description</span>
+          <span className={styles['item-value']}>
+            {challengeObj.description}
+          </span>
+        </div>
       </div>
-      <div>
-        <span>Creator</span>
-        <span>{challengeObj.creatorId}</span>
-      </div>
-      <div>
-        <span>Start date</span>
-        <span>{challengeObj.startDate}</span>
-      </div>
-      <div>
-        <span>End date</span>
-        <span>{challengeObj.endDate}</span>
-      </div>
-      <div>
-        <span>Frequency</span>
-        <span>{challengeObj.frequency}</span>
-      </div>
-      <div>
-        <span>Current number of participants</span>
-        <span>{challengeObj.participants}</span>
-      </div>
-      <div>
-        <span>Challenge description</span>
-        <span>{challengeObj.description}</span>
-      </div>
-      <button onClick={onParticipateClick}>Participate</button>
+      <button
+        className={styles['participate-btn']}
+        onClick={onParticipateClick}
+      >
+        Participate
+      </button>
     </div>
   );
 };

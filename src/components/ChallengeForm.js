@@ -9,6 +9,8 @@ import {
 } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import React, { useState } from 'react';
+import styles from 'assets/styles/ChallengeForm.module.css';
+
 const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -107,19 +109,32 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
     onSubmitForm();
   };
   return (
-    <div>
-      <h3>What kind of challenge do you want to do with other users?</h3>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="title">Challenge title</label>
+    <div className={styles['challenge-form-container']}>
+      <div className={styles['challenge-form-title']}>
+        What kind of challenge do you want to do with other users?
+      </div>
+      <form className={styles['challenge-form']} onSubmit={onSubmit}>
+        <label className={styles.label} htmlFor="title">
+          Challenge title
+        </label>
         <input
+          className={styles.input}
           name="title"
           type="text"
           required
           value={title}
           onChange={onChange}
         ></input>
-        <label htmlFor="category">Category</label>
-        <select name="category" required value={category} onChange={onChange}>
+        <label className={styles.label} htmlFor="category">
+          Category
+        </label>
+        <select
+          className={styles.input}
+          name="category"
+          required
+          value={category}
+          onChange={onChange}
+        >
           <option value={''}>Select category</option>
           <option value={'routine'}>Routine</option>
           <option value={'workout'}>Workout</option>
@@ -129,24 +144,44 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
           <option value={'selfcare'}>Self-care</option>
           <option value={'others'}>Others</option>
         </select>
-        <label htmlFor="startDate">Start date</label>
-        <input
-          name="start-date"
-          type="date"
+        <div className={styles.dates}>
+          <div className={styles.date}>
+            <label className={styles.label} htmlFor="startDate">
+              Start date
+            </label>
+            <input
+              className={styles.input}
+              name="start-date"
+              type="date"
+              required
+              value={startDate}
+              onChange={onChange}
+            ></input>
+          </div>
+          <div className={styles.date}>
+            <label className={styles.label} htmlFor="end-date">
+              End date
+            </label>
+            <input
+              className={styles.input}
+              name="end-date"
+              type="date"
+              required
+              value={endDate}
+              onChange={onChange}
+            ></input>
+          </div>
+        </div>
+        <label className={styles.label} htmlFor="frequency">
+          Frequency
+        </label>
+        <select
+          className={styles.input}
+          name="frequency"
           required
-          value={startDate}
+          value={frequency}
           onChange={onChange}
-        ></input>
-        <label htmlFor="end-date">End date</label>
-        <input
-          name="end-date"
-          type="date"
-          required
-          value={endDate}
-          onChange={onChange}
-        ></input>
-        <label htmlFor="frequency">Frequency</label>
-        <select name="frequency" required value={frequency} onChange={onChange}>
+        >
           <option value={''}>Select frequency</option>
           <option value={'everyday'}>Every day</option>
           <option value={'five'}>Five times a week</option>
@@ -154,16 +189,29 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
           <option value={'twice'}>Twice a week</option>
           <option value={'once'}>Once a week</option>
         </select>
-        <label htmlFor="description">Description</label>
-        <input
+        <label className={styles.label} htmlFor="description">
+          Description
+        </label>
+        <textarea
+          className={`${styles.input} ${styles['input-description']}`}
           name="description"
-          type="textarea"
           required
           value={description}
           onChange={onChange}
-        ></input>
-        <button onClick={onCreateCancelClick}>Cancel</button>
-        <input type="submit" value="Submit" />
+        ></textarea>
+        <div className={styles.btns}>
+          <button
+            className={`${styles.btn} ${styles.cancel}`}
+            onClick={onCreateCancelClick}
+          >
+            Cancel
+          </button>
+          <input
+            className={`${styles.btn} ${styles.submit}`}
+            type="submit"
+            value="Submit"
+          />
+        </div>
       </form>
     </div>
   );

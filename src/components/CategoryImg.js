@@ -5,8 +5,9 @@ import routineImg from 'img/challengeImg/routine.jpg';
 import selfcareImg from 'img/challengeImg/selfcare.jpg';
 import studyImg from 'img/challengeImg/study.jpg';
 import workoutImg from 'img/challengeImg/workout.jpg';
+import styles from 'assets/styles/CategoryImg.module.css';
 
-const CategoryImg = ({ challengeObj }) => {
+const CategoryImg = ({ challengeObj, usage }) => {
   const getCategoryImg = () => {
     switch (challengeObj.category) {
       case 'diet':
@@ -26,7 +27,14 @@ const CategoryImg = ({ challengeObj }) => {
       default:
     }
   };
-  return <img src={getCategoryImg()} alt="categoryImg"></img>;
+
+  return (
+    <img
+      className={`${styles['category-img']} ${styles[usage]}`}
+      src={getCategoryImg()}
+      alt="categoryImg"
+    ></img>
+  );
 };
 
 export default CategoryImg;
