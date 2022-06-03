@@ -145,7 +145,9 @@ const GoalCard = ({ goalObj, isOwner }) => {
             <div className={styles['card-header']}>
               <div className={styles['card-profile']}>
                 <FaUserCircle className={styles['profile-icon']} />
-                <span className={styles['profile-username']}>username</span>
+                <span className={styles['profile-username']}>
+                  {goalObj.displayName}
+                </span>
               </div>
               <span className={styles['card-date']}>
                 {new Date(goalObj.createdAt).toLocaleDateString()}

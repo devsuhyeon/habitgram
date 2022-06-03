@@ -39,6 +39,7 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
       reward,
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      displayName: userObj.displayName,
       indexColor: getRandomColor(),
     };
 

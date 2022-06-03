@@ -14,7 +14,7 @@ import SideNav from './SideNav';
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <Router>
-      {isLoggedIn && <SideNav />}
+      {isLoggedIn && <SideNav userObj={userObj} />}
       <Routes>
         {isLoggedIn ? (
           <>

@@ -51,7 +51,9 @@ function App() {
   const addNewUserToDB = async (user) => {
     try {
       const newUserObj = {
-        displayName: user.displayName,
+        displayName: user.displayName
+          ? user.displayName
+          : user.email.split('@')[0],
         uid: user.uid,
         participatingChallenges: [],
         userPosts: [],

@@ -63,6 +63,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
       participantsList: [userObj.uid],
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      displayName: userObj.displayName,
       status: 'scheduled',
       challengePosts: [],
     };

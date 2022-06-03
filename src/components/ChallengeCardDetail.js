@@ -61,7 +61,9 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
         </div>
         <div className={styles['item']}>
           <span className={styles['item-name']}>Creator</span>
-          <span className={styles['item-value']}>{challengeObj.creatorId}</span>
+          <span className={styles['item-value']}>
+            {challengeObj.displayName}
+          </span>
         </div>
         <div className={styles['item']}>
           <span className={styles['item-name']}>Start date</span>

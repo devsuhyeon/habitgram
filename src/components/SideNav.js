@@ -12,7 +12,7 @@ import { FiUsers } from 'react-icons/fi';
 import { FaUserCircle } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 
-const SideNav = () => {
+const SideNav = ({ userObj }) => {
   const navigate = useNavigate();
   const onLogOutClick = () => {
     signOut(authService).then(() => {
@@ -79,7 +79,8 @@ const SideNav = () => {
       <div className={styles.footer}>
         <div className={styles['footer-profile']}>
           <FaUserCircle className={styles['profile-icon']} />
-          <span className={styles['profile-displayName']}>username</span>
+          {userObj && userObj.displayName}
+          <span className={styles['profile-displayName']}></span>
         </div>
         <button
           title="Log Out"
