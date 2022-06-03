@@ -13,6 +13,7 @@ const Challenge = ({ userObj }) => {
   const [creating, setCreating] = useState(false);
   const [challenges, setChallenges] = useState([]);
   const [openedCard, setOpenedCard] = useState('');
+  const [currentCategory, setCurrentCategory] = useState('all');
 
   useEffect(() => {
     // Get challenges from database
@@ -50,6 +51,23 @@ const Challenge = ({ userObj }) => {
     setOpenedCard('');
   };
 
+  const onCategoryChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setCurrentCategory(value);
+  };
+
+  const getCategorizedChallenges = () => {
+    if (currentCategory === 'all') {
+      return challenges;
+    }
+    const categorizedChallenges = challenges.filter(
+      (challenge) => challenge.category === currentCategory
+    );
+    return categorizedChallenges;
+  };
+
   return (
     <div className="main-page">
       {/* If creating is true, the Challenge Form is shown */}
@@ -77,16 +95,78 @@ const Challenge = ({ userObj }) => {
       <h3 className={styles['challenge-list']}>Challenge List</h3>
       <div className={styles['challenge-list-btns']}>
         <div className={styles.categories}>
-          <button className={`${styles.category} ${styles.active} `}>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'all' && styles.active
+            } `}
+            value="all"
+            onClick={onCategoryChange}
+          >
             All
           </button>
-          <button className={styles.category}>Routine</button>
-          <button className={styles.category}>Workout</button>
-          <button className={styles.category}>Diet</button>
-          <button className={styles.category}>Hobby</button>
-          <button className={styles.category}>Study</button>
-          <button className={styles.category}>Self-care</button>
-          <button className={styles.category}>Others</button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'routine' && styles.active
+            } `}
+            value="routine"
+            onClick={onCategoryChange}
+          >
+            Routine
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'workout' && styles.active
+            } `}
+            value="workout"
+            onClick={onCategoryChange}
+          >
+            Workout
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'diet' && styles.active
+            } `}
+            value="diet"
+            onClick={onCategoryChange}
+          >
+            Diet
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'hobby' && styles.active
+            } `}
+            value="hobby"
+            onClick={onCategoryChange}
+          >
+            Hobby
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'study' && styles.active
+            } `}
+            value="study"
+            onClick={onCategoryChange}
+          >
+            Study
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'selfcare' && styles.active
+            } `}
+            value="selfcare"
+            onClick={onCategoryChange}
+          >
+            Self-care
+          </button>
+          <button
+            className={`${styles.category} ${
+              currentCategory === 'others' && styles.active
+            } `}
+            value="others"
+            onClick={onCategoryChange}
+          >
+            Others
+          </button>
         </div>
         <button
           className={styles['create-challenge-btn']}
@@ -97,7 +177,7 @@ const Challenge = ({ userObj }) => {
       </div>
       <div className={styles['cards-container']}>
         <div className={styles.cards}>
-          {challenges.map((challenge) => (
+          {getCategorizedChallenges().map((challenge) => (
             <ChallengeCard
               key={challenge.id}
               challengeObj={challenge}
