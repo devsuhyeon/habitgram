@@ -46,14 +46,12 @@
   font-size: 1.1rem;
   padding: 0;
   margin-bottom: 0.4rem;
+  color: var(--color-grey);
 }
 
-.card-edit:hover {
-  color: var(--color-white);
-}
-
+.card-edit:hover,
 .card-delete:hover {
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 /**********************/
@@ -126,7 +124,7 @@
 .edit-form {
   display: flex;
   flex-direction: column;
-  margin: 0.8rem 1rem;
+  margin: 0.6rem 1rem;
 }
 
 .edit-form-btns {
@@ -134,14 +132,15 @@
 }
 
 .edit-form-btn {
-  width: 3.4rem;
-  font-size: var(--font-micro);
-  font-weight: var(--weight-medium);
+  width: 3.2rem;
+  font-size: 0.7rem;
+  font-weight: var(--weight-semi-bold);
   padding: 0.2rem 0;
   border-radius: var(--size-border-radius-small);
 }
 
 .edit-form-update {
+  font-weight: var(--weight-semi-bold);
   background-color: var(--color-orange);
   color: var(--color-white);
   outline: none;
@@ -156,17 +155,18 @@
 }
 
 .edit-form-cancel {
-  transition: all 100ms ease-in;
+  color: var(--color-medium-grey);
 }
 
 .edit-form-cancel:hover {
-  font-weight: var(--weight-semi-bold);
+  color: var(--color-black);
 }
 
 .edit-form-label {
   font-size: var(--font-micro);
-  font-weight: var(--weight-semi-bold);
+  font-weight: var(--weight-medium);
 }
 .edit-form-input {
+  height: 1.25rem;
   margin-bottom: 0.4rem;
 }

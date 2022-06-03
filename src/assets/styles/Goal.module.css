@@ -1,20 +1,15 @@
-.page-title {
-  user-select: none;
-}
-
 .page-description {
   font-weight: var(--weight-regular);
   line-height: 1.5;
   color: var(--color-grey);
   margin-bottom: 2.2rem;
-  user-select: none;
 }
 
 .add-goal-btn {
-  width: 8rem;
-  height: 2.1rem;
-  font-size: var(--font-small);
-  font-weight: var(--weight-medium);
+  width: 8.2rem;
+  height: 2rem;
+  font-size: var(--font-tiny);
+  font-weight: var(--weight-semi-bold);
   color: var(--color-white);
   background-color: var(--color-orange);
   align-self: flex-end;
@@ -70,34 +65,34 @@
 
 .goal-form .btn {
   width: 4.4rem;
-  height: 1.8rem;
-  font-size: var(--font-small);
-  font-weight: var(--weight-medium);
-  border-radius: var(--size-border-radius-small);
+  height: 1.6rem;
+  font-size: var(--font-tiny);
   padding: 0.2rem 0;
-}
-
-.goal-form .btn.cancel {
-  transition: all 100ms ease-in;
-}
-
-.goal-form .btn.cancel:hover {
+  border-radius: var(--size-border-radius-small);
   font-weight: var(--weight-semi-bold);
 }
 
+.goal-form .btn.cancel {
+  color: var(--color-medium-grey);
+}
+
+.goal-form .btn.cancel:hover {
+  color: var(--color-black);
+}
+
 .goal-form .btn.submit {
-  color: var(--color-white);
-  background-color: var(--color-orange);
-  border: none;
   outline: none;
+  border: none;
+  background-color: var(--color-orange);
+  color: var(--color-white);
   margin-left: 0.2rem;
-  cursor: pointer;
   transition: all 100ms ease-in;
+  cursor: pointer;
 }
 
 .goal-form .btn.submit:hover {
-  color: var(--color-black);
   background-color: var(--color-light-white);
+  color: var(--color-black);
 }
 
 /*************/
