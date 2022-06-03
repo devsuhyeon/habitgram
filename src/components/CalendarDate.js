@@ -8,6 +8,7 @@ const CalendarDate = ({
   selectedDateList,
   onSelectDate,
   onSelectCancel,
+  calendarColor,
 }) => {
   const [selected, setSelected] = useState(false);
   const selectedDate = `${date}/${month + 1}/${year}`;
@@ -34,7 +35,9 @@ const CalendarDate = ({
 
   return (
     <div
-      className={`${styles.date} ${selected ? styles.selected : ''}`}
+      className={`${styles.date} ${
+        selected && `${styles.selected} ${styles[calendarColor]}`
+      }`}
       onClick={toggleSelect}
     >
       {date}

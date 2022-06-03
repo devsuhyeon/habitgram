@@ -10,6 +10,7 @@ const Calendar = ({
   onSelectDate,
   onSelectCancel,
   getMonthCount,
+  calendarColor,
 }) => {
   const [currentCalendar, setCurrentCalendar] = useState(new Date());
   const [year, setYear] = useState(currentCalendar.getFullYear());
@@ -65,7 +66,7 @@ const Calendar = ({
 
   return (
     <div className={styles.calendar}>
-      <div className={styles['nav']}>
+      <div className={`${styles['nav']} ${styles[calendarColor]}`}>
         <button className={styles['nav-btn']} onClick={onPrevClick}>
           <BiChevronLeft />
         </button>
@@ -97,6 +98,7 @@ const Calendar = ({
             selectedDateList={selectedDateList}
             onSelectDate={onSelectDate}
             onSelectCancel={onSelectCancel}
+            calendarColor={calendarColor}
           />
         ))}
       </div>

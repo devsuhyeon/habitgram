@@ -145,6 +145,7 @@ const HabitCard = ({ habit }) => {
           onSelectDate={onSelectDate}
           onSelectCancel={onSelectCancel}
           getMonthCount={getMonthCount}
+          calendarColor={habit.calendarColor}
         />
       </div>
     </div>

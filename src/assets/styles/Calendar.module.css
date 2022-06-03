@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.4rem;
-  background-color: rgb(88, 139, 129);
+  background-color: var(--color-dark-green);
   width: 100%;
   height: 1.8rem;
   justify-content: center;
@@ -21,10 +21,35 @@
   border-top-right-radius: 0.55rem;
 }
 
+.nav.yellow {
+  background-color: var(--color-dark-yellow);
+}
+
+.nav.turquoise {
+  background-color: var(--color-dark-turquoise);
+}
+
+.nav.blue {
+  background-color: var(--color-dark-blue);
+}
+
+.nav.green {
+  background-color: var(--color-dark-green);
+}
+
+.nav.purple {
+  background-color: var(--color-dark-purple);
+}
+
+.nav.pink {
+  background-color: var(--color-dark-pink);
+}
+
 .nav-month {
   width: 7.4rem;
   text-align: center;
   color: white;
+  user-select: none;
 }
 
 .nav-btn {
@@ -41,6 +66,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 0.2rem;
+  user-select: none;
 }
 
 .day {
@@ -63,6 +89,7 @@
 
 .dates.non-editing {
   pointer-events: none;
+  user-select: none;
 }
 
 .date {
@@ -81,7 +108,31 @@
 }
 
 .selected {
-  background-color: rgb(88, 139, 129);
+  background-color: var(--color-dark-green);
   color: white;
   border-radius: var(--size-border-radius-small);
+}
+
+.selected.yellow {
+  background-color: var(--color-dark-yellow);
+}
+
+.selected.turquoise {
+  background-color: var(--color-dark-turquoise);
+}
+
+.selected.blue {
+  background-color: var(--color-dark-blue);
+}
+
+.selected.green {
+  background-color: var(--color-dark-green);
+}
+
+.selected.purple {
+  background-color: var(--color-dark-purple);
+}
+
+.selected.pink {
+  background-color: var(--color-dark-pink);
 }
