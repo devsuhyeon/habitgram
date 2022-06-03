@@ -1,13 +1,15 @@
 import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
-import styles from 'assets/styles/Goal.module.css';
+import styles from 'assets/styles/GoalForm.module.css';
 
 const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
   const [goal, setGoal] = useState('');
   const [plan, setPlan] = useState('');
   const [period, setPeriod] = useState('');
   const [reward, setReward] = useState('');
+  const [color, setColor] = useState('purple');
+
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -22,16 +24,15 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
       setReward(value);
     }
   };
-  const getRandomColor = () => {
-    // get random color for goal card index
-    const colors = ['purple', 'pink', 'yellow', 'green', 'blue'];
-    const randomNumber = Math.floor(Math.random() * colors.length);
-    console.log(randomNumber);
-    return colors[randomNumber];
+
+  const onColorChange = (event) => {
+    const clickedColor = event.target.getAttribute('value');
+    setColor(clickedColor);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    console.log(color);
     const goalObj = {
       goal,
       plan,
@@ -40,7 +41,7 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
       createdAt: Date.now(),
       creatorId: userObj.uid,
       displayName: userObj.displayName,
-      indexColor: getRandomColor(),
+      indexColor: color,
     };
 
     try {
@@ -111,6 +112,44 @@ const GoalForm = ({ userObj, onCancelClick, onGoalSubmit }) => {
           value={reward}
           onChange={onChange}
         ></input>
+        <label className={styles.label}>Goal card color</label>
+        <div className={styles.colors}>
+          <div
+            className={`${styles.color} ${styles.purple} ${
+              color === 'purple' && styles.active
+            }`}
+            value="purple"
+            onClick={onColorChange}
+          ></div>
+          <div
+            className={`${styles.color} ${styles.pink} ${
+              color === 'pink' && styles.active
+            }`}
+            value="pink"
+            onClick={onColorChange}
+          ></div>
+          <div
+            className={`${styles.color} ${styles.yellow} ${
+              color === 'yellow' && styles.active
+            }`}
+            value="yellow"
+            onClick={onColorChange}
+          ></div>
+          <div
+            className={`${styles.color} ${styles.green} ${
+              color === 'green' && styles.active
+            }`}
+            value="green"
+            onClick={onColorChange}
+          ></div>
+          <div
+            className={`${styles.color} ${styles.blue} ${
+              color === 'blue' && styles.active
+            }`}
+            value="blue"
+            onClick={onColorChange}
+          ></div>
+        </div>
         <div className={styles.btns}>
           <button
             className={`${styles.btn} ${styles.cancel}`}
