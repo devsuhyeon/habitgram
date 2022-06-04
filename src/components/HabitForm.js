@@ -38,24 +38,13 @@ const HabitForm = ({ userObj, onSubmitForm, onCancelClick }) => {
   };
 
   return (
-    <div className={styles['new-habit']}>
+    <div className={styles['new-habit-form-container']}>
+      <h3 className={styles['new-habit-title']}>
+        What would you like to make a habit?
+      </h3>
       <form className={styles['new-habit-form']} onSubmit={onSubmit}>
-        <div className={styles.btns}>
-          <button
-            className={`${styles.btn} ${styles.cancel}`}
-            onClick={onCancelClick}
-          >
-            Cancel
-          </button>
-          <input
-            className={`${styles.btn} ${styles.submit}`}
-            type="submit"
-            value="Add"
-          ></input>
-        </div>
-
         <label className={styles.label} htmlFor="habit-title">
-          Habit Title
+          Habit title
         </label>
         <input
           className={styles.input}
@@ -81,17 +70,17 @@ const HabitForm = ({ userObj, onSubmitForm, onCancelClick }) => {
             onClick={onColorChange}
           ></div>
           <div
-            className={`${styles.color} ${styles.blue} ${
-              color === 'blue' && styles.active
-            }`}
-            value="blue"
-            onClick={onColorChange}
-          ></div>
-          <div
             className={`${styles.color} ${styles.green} ${
               color === 'green' && styles.active
             }`}
             value="green"
+            onClick={onColorChange}
+          ></div>
+          <div
+            className={`${styles.color} ${styles.blue} ${
+              color === 'blue' && styles.active
+            }`}
+            value="blue"
             onClick={onColorChange}
           ></div>
           <div
@@ -108,6 +97,19 @@ const HabitForm = ({ userObj, onSubmitForm, onCancelClick }) => {
             value="pink"
             onClick={onColorChange}
           ></div>
+        </div>
+        <div className={styles.btns}>
+          <button
+            className={`${styles.btn} ${styles.cancel}`}
+            onClick={onCancelClick}
+          >
+            Cancel
+          </button>
+          <input
+            className={`${styles.btn} ${styles.submit}`}
+            type="submit"
+            value="Add"
+          ></input>
         </div>
       </form>
     </div>

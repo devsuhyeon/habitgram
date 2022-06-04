@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { dbService } from 'fbase';
-import { GrFormAdd } from 'react-icons/gr';
+import { BiPlus } from 'react-icons/bi';
 import HabitCard from 'components/HabitCard';
 import styles from 'assets/styles/Habit.module.css';
 import HabitForm from 'components/HabitForm';
+import Modal from 'components/Modal';
 
 const Habit = ({ userObj }) => {
   const [creatingHabit, setCreatingHabit] = useState(false);
@@ -47,22 +48,23 @@ const Habit = ({ userObj }) => {
     <div className="main-page">
       <h2>Habit</h2>
       <div className={styles['habit-cards']}>
+        <div className={styles['new-habit']}>
+          <button className={styles['new-habit-btn']} onClick={onCreateHabit}>
+            <BiPlus className={styles['add-icon']} /> New Habit
+          </button>
+          {creatingHabit && (
+            <Modal onCancelClick={onCancelClick}>
+              <HabitForm
+                userObj={userObj}
+                onSubmitForm={onSubmitForm}
+                onCancelClick={onCancelClick}
+              />
+            </Modal>
+          )}
+        </div>
         {habits.map((habit) => (
           <HabitCard key={habit.id} habit={habit} />
         ))}
-        <div className={styles['new-habit']}>
-          {creatingHabit ? (
-            <HabitForm
-              userObj={userObj}
-              onSubmitForm={onSubmitForm}
-              onCancelClick={onCancelClick}
-            />
-          ) : (
-            <button className={styles['new-habit-btn']} onClick={onCreateHabit}>
-              <GrFormAdd className={styles['add-icon']} /> New Habit
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );

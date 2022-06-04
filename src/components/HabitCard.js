@@ -126,16 +126,26 @@ const HabitCard = ({ habit }) => {
           ) : (
             <span className={styles['card-title']}>{habit.title}</span>
           )}
-          <div className={styles.counts}>
-            <div className={styles.count}>
-              <span className={styles['count-title']}>
-                Current month count:
+          <div className={styles['counts']}>
+            <div className={styles['count']}>
+              <span className={styles['count-title']}>Current month count</span>
+              <span
+                className={`${styles['count-number']} ${
+                  styles[habit.calendarColor]
+                }`}
+              >
+                {monthCount}
               </span>
-              <span>{monthCount}</span>
             </div>
             <div className={styles.count}>
-              <span className={styles['count-title']}>Total count:</span>
-              <span>{selectedDateList.length}</span>
+              <span className={styles['count-title']}>Total count</span>
+              <span
+                className={`${styles['count-number']} ${
+                  styles[habit.calendarColor]
+                }`}
+              >
+                {selectedDateList.length}
+              </span>
             </div>
           </div>
         </div>

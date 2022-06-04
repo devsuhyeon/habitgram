@@ -1,6 +1,11 @@
+.habit-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+
 .new-habit {
-  height: 12rem;
-  margin-top: 2rem;
 }
 
 .new-habit-btn {
@@ -11,23 +16,21 @@
   height: 2rem;
   font-size: 1rem;
   font-weight: var(--weight-semi-bold);
-  background-color: var(--color-light-white);
+  background-color: var(--color-orange);
+  color: var(--color-white);
   border-radius: var(--size-border-radius-regular);
+  margin-bottom: 2rem;
   transition: all 200ms ease;
 }
 
 .new-habit-btn:hover {
-  background-color: var(--color-light-grey);
+  background-color: var(--color-light-white);
+  color: var(--color-black);
 }
 
 .add-icon {
-  font-size: 1.2rem;
-  margin-right: 0.2rem;
-}
-
-.habit-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2.8rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.4rem;
+  margin-bottom: 0.1rem;
 }

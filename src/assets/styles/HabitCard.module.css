@@ -34,6 +34,7 @@
 }
 
 .card-title {
+  width: 100%;
   height: 1.6rem;
   font-size: var(--font-regular);
   font-weight: var(--weight-medium);
@@ -84,4 +85,33 @@
 
 .count-title {
   margin-right: 0.6rem;
+}
+
+.count-number {
+  font-size: 1.1rem;
+  font-weight: var(--weight-semi-bold);
+}
+
+.count-number.yellow {
+  color: var(--color-dark-yellow);
+}
+
+.count-number.turquoise {
+  color: var(--color-dark-turquoise);
+}
+
+.count-number.blue {
+  color: var(--color-dark-blue);
+}
+
+.count-number.green {
+  color: var(--color-dark-green);
+}
+
+.count-number.purple {
+  color: var(--color-dark-purple);
+}
+
+.count-number.pink {
+  color: var(--color-dark-pink);
 }
