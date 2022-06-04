@@ -43,7 +43,25 @@ const AuthForm = ({ isNewAccount }) => {
       }
       navigate('/goal');
     } catch (error) {
-      setError(error.message.replace('Firebase: ', ''));
+      let result;
+
+      switch (error.code) {
+        case 'auth/weak-password':
+          result = 'Password should be at least 6 characters.';
+          break;
+        case 'auth/invalid-email':
+          result = 'Invalid email.';
+          break;
+        case 'auth/user-not-found':
+          result = 'User not found.';
+          break;
+        case 'auth/wrong-password':
+          result = 'Wrong password.';
+          break;
+        default:
+          console.log(error.message);
+      }
+      setError(result);
     }
   };
   return (
@@ -78,7 +96,7 @@ const AuthForm = ({ isNewAccount }) => {
           value={password}
           onChange={onChange}
         ></input>
-        <span>{error}</span>
+        <span className={styles.error}>{error}</span>
         <input
           className={`${styles.submit} ${
             newAccount ? styles.signup : styles.login
