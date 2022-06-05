@@ -46,15 +46,15 @@ const Goal = ({ userObj }) => {
           />
         </Modal>
       )}
-      <div>
-        <h2 className={styles['page-title']}>Goals &amp; Rewards</h2>
-        <h4 className={styles['page-description']}>
-          Set goals before you set out on your journey and share your goals with
-          others. <br />
-          It helps you stay motivated and become accountable.
-        </h4>
-      </div>
-      <div className={styles['cards-container']}>
+      <div className={styles['page-content-container']}>
+        <div>
+          <h2 className={styles['page-title']}>Goal &amp; Reward</h2>
+          <h4 className={styles['page-description']}>
+            Set goals before you set out on your journey and share your goals
+            with others. <br />
+            It helps you stay motivated and become accountable.
+          </h4>
+        </div>
         <button className={styles['add-goal-btn']} onClick={onSetNewGoal}>
           Set a new goal
         </button>

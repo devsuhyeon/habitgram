@@ -1,39 +1,33 @@
+.page-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-description {
   font-weight: var(--weight-regular);
   line-height: 1.5;
   color: var(--color-grey);
-  margin-bottom: 2.2rem;
+  margin-bottom: 0;
 }
 
 .add-goal-btn {
+  align-self: flex-end;
+  position: relative;
+  top: -2.2rem;
+  right: 4.4rem;
   width: 8.2rem;
   height: 2rem;
   font-size: var(--font-tiny);
   font-weight: var(--weight-semi-bold);
   color: var(--color-white);
   background-color: var(--color-orange);
-  align-self: flex-end;
   border-radius: var(--size-border-radius-regular);
-  margin-right: 1.4rem;
-  margin-bottom: 1.4rem;
   transition: all 100ms ease-in;
 }
 
 .add-goal-btn:hover {
   background-color: var(--color-light-white);
   color: var(--color-black);
-}
-
-/*************/
-/* Goal Cards */
-/*************/
-.cards-container {
-  position: relative;
-  top: -4rem;
-  width: 70rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .cards {
