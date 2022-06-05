@@ -5,8 +5,8 @@
 }
 
 .category-img.card {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: var(--size-border-radius-medium);
+  border-top-right-radius: var(--size-border-radius-medium);
   box-shadow: none;
 }
 
