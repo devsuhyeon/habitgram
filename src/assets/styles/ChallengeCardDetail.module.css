@@ -39,6 +39,9 @@
 }
 
 .card-detail-content .title-category {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 1.2rem;
 }
 
@@ -46,6 +49,7 @@
   font-size: var(--font-regular);
   font-weight: var(--weight-medium);
   margin-right: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 .card-detail-content .category {

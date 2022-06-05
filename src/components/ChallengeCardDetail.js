@@ -46,6 +46,22 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
       navigate(`/challenge/challengegroup/${challengeObj.id}`);
     }
   };
+
+  const getFrequency = () => {
+    switch (challengeObj.frequency) {
+      case 'everyday':
+        return 'every day';
+      case 'five':
+        return '5 times a week';
+      case 'three':
+        return '3 times a week';
+      case 'twice':
+        return 'twice a week';
+      case 'once':
+        return 'once a week';
+      default:
+    }
+  };
   return (
     <div className={styles['card-detail']}>
       <button className={styles['card-detail-close']} onClick={onCardClose}>
@@ -57,7 +73,11 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
       <div className={styles['card-detail-content']}>
         <div className={styles['title-category']}>
           <span className={styles['title']}>{challengeObj.title}</span>
-          <span className={styles['category']}>{challengeObj.category}</span>
+          <div className={styles['categories']}>
+            <span className={styles['category']}>{challengeObj.category}</span>
+            <span className={styles['category']}>{challengeObj.days} days</span>
+            <span className={styles['category']}>{getFrequency()}</span>
+          </div>
         </div>
         <div className={styles['item']}>
           <span className={styles['item-name']}>Creator</span>
@@ -75,7 +95,7 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
         </div>
         <div className={styles['item']}>
           <span className={styles['item-name']}>Frequency</span>
-          <span className={styles['item-value']}>{challengeObj.frequency}</span>
+          <span className={styles['item-value']}>{getFrequency()}</span>
         </div>
         <div className={styles['item']}>
           <span className={styles['item-name']}>
