@@ -1,5 +1,5 @@
 .side-nav {
-  width: 18rem;
+  width: 17rem;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -9,7 +9,7 @@
 }
 
 .logo {
-  color: var(--color-orange);
+  color: var(--color-dark-orange);
   font-size: var(--font-medium);
   font-weight: var(--weight-bold);
   margin: 3rem 0;
@@ -31,7 +31,7 @@
 }
 
 .page {
-  width: 100%;
+  width: 12rem;
 }
 
 .page-link {
@@ -68,7 +68,7 @@
 
 .page-title {
   font-size: var(--font-micro);
-  font-weight: var(--weight-semi-bold);
+  font-weight: var(--weight-medium);
   margin-left: 0.2rem;
 }
 
@@ -76,7 +76,7 @@
 /* Footer */
 /**********/
 .footer {
-  width: 12rem;
+  width: 11.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -100,8 +100,7 @@
 
 .footer .profile-displayName {
   font-size: var(--font-small);
-  font-weight: var(--weight-semi-bold);
-  user-select: none;
+  font-weight: var(--weight-medium);
 }
 
 .footer-logout {
@@ -113,11 +112,10 @@
   border-radius: 0.3rem;
   border-radius: var(--size-border-radius-regular);
   cursor: pointer;
-  font-size: var(--font-small);
-  transition: transform 100ms;
+  font-size: 1.1rem;
+  color: var(--color-grey);
 }
 
 .footer-logout:hover {
-  color: var(--color-grey);
-  transform: scale(1.1);
+  color: var(--color-black);
 }

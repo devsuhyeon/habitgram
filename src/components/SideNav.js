@@ -33,7 +33,7 @@ const SideNav = ({ userObj }) => {
             }
           >
             <FiTarget className={styles['page-icon']} />
-            <span className={styles['page-title']}>GOALS &amp; REWARDS</span>
+            <span className={styles['page-title']}>GOAL &amp; REWARD</span>
           </NavLink>
         </li>
         <li className={styles.page}>
@@ -46,7 +46,7 @@ const SideNav = ({ userObj }) => {
             }
           >
             <BsCalendarWeek className={styles['page-icon']} />
-            <span className={styles['page-title']}>HABITS</span>
+            <span className={styles['page-title']}>HABIT</span>
           </NavLink>
         </li>
         <li className={styles.page}>
@@ -79,8 +79,9 @@ const SideNav = ({ userObj }) => {
       <div className={styles.footer}>
         <div className={styles['footer-profile']}>
           <FaUserCircle className={styles['profile-icon']} />
-          {userObj && userObj.displayName}
-          <span className={styles['profile-displayName']}></span>
+          <span className={styles['profile-displayName']}>
+            {userObj && userObj.displayName}
+          </span>
         </div>
         <button
           title="Log Out"
