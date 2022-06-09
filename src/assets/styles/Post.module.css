@@ -2,18 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 21rem;
-  height: 24.5rem;
+  width: 20rem;
+  height: 23rem;
   padding: 0.8rem 0;
-  margin-right: 2.2rem;
-  margin-bottom: 2rem;
+  margin: 0 1.4rem 2rem;
   border-radius: var(--size-border-radius-medium);
   box-shadow: 1px 4px 12px -1px rgba(0, 0, 0, 0.25);
 }
 
 .post-header {
   display: flex;
-  width: 16rem;
+  width: 15rem;
 }
 
 .post-header .profile-icon {
@@ -40,8 +39,8 @@
 }
 
 .post .picture {
-  width: 16rem;
-  height: 14.5rem;
+  width: 15rem;
+  height: 14.4rem;
   margin: 0.8rem 0 0.6rem;
 }
 
@@ -52,8 +51,8 @@
 }
 
 .post .btns {
-  display: flex;
   align-self: flex-end;
+  display: flex;
   margin-right: 1rem;
 }
 
@@ -68,6 +67,8 @@
 }
 
 .post .delete-btn {
+  display: flex;
+  align-items: center;
   font-size: 1.1rem;
   color: var(--color-grey);
   padding: 0;

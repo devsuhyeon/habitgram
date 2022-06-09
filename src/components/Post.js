@@ -13,6 +13,7 @@ const Post = ({ userObj, post, challengeObj }) => {
   const challengeRef = doc(dbService, 'challenge', challengeObj.id);
   const userRef = doc(dbService, 'user', userObj.DBid);
   const urlRef = ref(storageService, post.previewUrl);
+  const isOwner = post.creatorId === userObj.uid;
 
   const onReportClick = () => {
     setReporting(true);
@@ -74,9 +75,12 @@ const Post = ({ userObj, post, challengeObj }) => {
         <button className={styles['report-btn']} onClick={onReportClick}>
           Report
         </button>
-        <button className={styles['delete-btn']} onClick={onPostDelete}>
-          <MdDelete />
-        </button>
+        {/* Delete button is only visible for post creator */}
+        {isOwner && (
+          <button className={styles['delete-btn']} onClick={onPostDelete}>
+            <MdDelete />
+          </button>
+        )}
       </div>
       {reporting && (
         <Modal onCancelClick={onReportCancel}>
