@@ -7,7 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import styles from 'assets/styles/Login.module.css';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
 const AuthForm = ({ isNewAccount }) => {
   const [email, setEmail] = useState('');
@@ -44,7 +44,6 @@ const AuthForm = ({ isNewAccount }) => {
       navigate('/goal');
     } catch (error) {
       let result;
-
       switch (error.code) {
         case 'auth/weak-password':
           result = 'Password should be at least 6 characters.';
@@ -58,6 +57,8 @@ const AuthForm = ({ isNewAccount }) => {
         case 'auth/wrong-password':
           result = 'Wrong password.';
           break;
+        case 'auth/email-already-in-use':
+          result = 'This email is already in use.';
         default:
           console.log(error.message);
       }
@@ -67,7 +68,7 @@ const AuthForm = ({ isNewAccount }) => {
   return (
     <div className={styles['auth-form-container']}>
       <Link className={styles['previous-btn']} to="/">
-        <AiOutlineArrowLeft />
+        <BsArrowLeftShort />
       </Link>
       <div className={styles.logo}>Habitgram</div>
       <span className={styles['form-type']}>
