@@ -1,0 +1,239 @@
+.page-container {
+  width: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.homepage {
+  position: relative;
+  width: 100%;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-color: var(--color-white);
+}
+
+.nav {
+  width: 100rem;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12rem;
+  margin: 0 auto;
+}
+
+.nav-container.active {
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-bold);
+  color: var(--color-orange);
+  cursor: pointer;
+}
+
+.link {
+  color: var(--color-grey);
+  font-weight: var(--weight-medium);
+}
+
+.link:hover {
+  color: var(--color-black);
+}
+
+.signup {
+  margin-right: 2rem;
+}
+
+.header {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 12rem 5rem;
+}
+
+.header .content {
+  width: 40rem;
+  padding-right: 2rem;
+  padding-bottom: 4rem;
+}
+
+.header .title {
+  margin-bottom: 1rem;
+}
+
+.header .description {
+  width: 34rem;
+  font-size: var(--font-regular);
+  line-height: 1.5;
+  color: var(--color-grey);
+  margin-bottom: 3rem;
+}
+
+.header .get-started {
+  font-size: var(--font-small);
+  font-weight: var(--weight-semi-bold);
+  border-radius: var(--size-border-radius-small);
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border: 2px solid var(--color-orange);
+  padding: 0.6rem 1.2rem;
+}
+
+.header .get-started:hover {
+  background-color: var(--color-white);
+  color: var(--color-orange);
+  border: 2px solid var(--color-orange);
+}
+
+.header img {
+  width: 36rem;
+  padding-right: 5rem;
+}
+
+.recommend {
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-light-white);
+  padding: 5rem 12rem;
+}
+
+.recommend .title {
+  margin-bottom: 5.2rem;
+}
+
+.recommend .items {
+  width: 78rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recommend .item {
+  width: 22.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.recommend .icon-container {
+  width: 7.4rem;
+  height: 7.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  margin-bottom: 3.6rem;
+}
+
+.recommend .icon {
+  font-size: 4.2rem;
+  color: var(--color-dark-orange);
+}
+
+.recommend .description {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-medium);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.features {
+  width: 100rem;
+  padding: 5rem 10rem;
+  margin: 0 auto;
+}
+
+.features .title {
+  text-align: center;
+}
+
+.feature {
+  height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.feature .content {
+  width: 34%;
+  height: 8rem;
+}
+
+.feature img {
+  width: 66%;
+}
+
+.feature .description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--color-grey);
+}
+
+.goal img {
+  width: 32rem;
+}
+
+.progress img {
+  width: 30rem;
+}
+
+.challenge img {
+  width: 40rem;
+}
+
+.post img {
+  width: 40rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-orange);
+
+  width: 100vw;
+}
+
+.footer-content {
+  width: 100rem;
+  height: 14rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-white);
+  padding: 3rem 12rem 1.4rem;
+}
+
+.footer .logo-contact {
+  display: flex;
+}
+
+.footer .logo {
+  font-size: var(--font-medium);
+  color: var(--color--white);
+  margin-right: 30rem;
+}
+
+.footer .contact {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-semi-bold);
+}
+
+.footer .email {
+  font-size: var(--font-small);
+}
+
+.footer .copyright {
+  font-size: var(--font-tiny);
+}

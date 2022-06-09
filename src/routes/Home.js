@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegSadTear } from 'react-icons/fa';
 import { GiProgression } from 'react-icons/gi';
@@ -8,96 +8,153 @@ import challengegroupImg from 'img/homepageImg/challengegroup.png';
 import challengelistImg from 'img/homepageImg/challengelist.png';
 import goalcardImg from 'img/homepageImg/goalcard.png';
 import habitcardImg from 'img/homepageImg/habitcard.png';
-import postcardImg from 'img/homepageImg/postcard.png';
+import postImg from 'img/homepageImg/post.png';
+import styles from 'assets/styles/Home.module.css';
 
 const Home = () => {
+  const [scrollY, setScrollY] = useState();
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setScrollY(window.scrollY);
+    });
+  }, []);
+
   return (
-    <div>
-      <nav>
-        <div>Habitgram</div>
-        <div>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/login">Log In</Link>
+    <div className={styles['page-container']}>
+      <div className={styles.homepage}>
+        <div
+          className={`${styles['nav-container']} ${
+            scrollY > 0 && styles.active
+          }`}
+        >
+          <nav className={styles.nav}>
+            <div
+              className={styles.logo}
+              onClick={() => {
+                window.location.replace('/');
+              }}
+            >
+              Habitgram
+            </div>
+            <div>
+              <Link to="/signup" className={`${styles.link} ${styles.signup}`}>
+                Sign Up
+              </Link>
+              <Link to="/login" className={styles.link}>
+                Log In
+              </Link>
+            </div>
+          </nav>
         </div>
-      </nav>
-      <header>
-        <div>
-          <h2>Don't challenge alone, Change your life together</h2>
-          <div>
-            Share your goals and stay motivated. It won't be lonely journey
-            anymore.
+        <header className={styles.header}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>
+              Don't challenge alone, <br /> Change your life together
+            </h1>
+            <div className={styles.description}>
+              Share your goals and stay motivated. It won't be lonely journey
+              anymore.
+            </div>
+            <Link to="/signup" className={styles['get-started']}>
+              Get started
+            </Link>
           </div>
-          <button>
-            <Link to="/signup">Get started</Link>
-          </button>
-        </div>
-        <img src={postcardImg}></img>
-      </header>
-      <section>
-        <h3>Recommend for these people</h3>
-        <div>
-          <FaRegSadTear />
-          <h4>Those who set goals but give up whithin a few days</h4>
-        </div>
-        <div>
-          <GiProgression />
-          <h4>Those who want to see the progress of each month at a glance</h4>
-        </div>
-        <div>
-          <FaUsers />
-          <h4>Those who want to move forward with people with the same goal</h4>
-        </div>
-      </section>
-      <article>
-        <h3>Features</h3>
-        <section>
-          <img src={goalcardImg}></img>
-          <div>
-            <h4>Set your goal with self-reward</h4>
-            <p>
-              Setting goals is the first step in the journey, and self-reward
-              helps you keep moving towards your goals.
-            </p>
+          <img src={postImg} alt="postImg"></img>
+        </header>
+        <section className={styles.recommend}>
+          <h2 className={styles.title}>Recommend for these people</h2>
+          <div className={styles.items}>
+            <div className={styles.item}>
+              <div className={styles['icon-container']}>
+                <FaRegSadTear className={styles.icon} />
+              </div>
+              <span className={styles.description}>
+                Those who set goals but give up whithin a few days
+              </span>
+            </div>
+            <div className={styles.item}>
+              <div className={styles['icon-container']}>
+                <GiProgression className={styles.icon} />
+              </div>
+              <span className={styles.description}>
+                Those who want to see the progress of each month at a glance
+              </span>
+            </div>
+            <div className={styles.item}>
+              <div className={styles['icon-container']}>
+                <FaUsers className={styles.icon} />
+              </div>
+              <span className={styles.description}>
+                Those who want to move forward with people with the same goal
+              </span>
+            </div>
           </div>
         </section>
-        <section>
-          <div>
-            <h4>Track your progress</h4>
-            <p>
-              You can see the progress of your habits at a glance with calendar
-            </p>
+        <article className={styles.features}>
+          <h2 className={styles.title}>Features</h2>
+          <section className={`${styles.feature} ${styles.goal}`}>
+            <img src={goalcardImg} alt="goalcardImg"></img>
+            <div className={styles.content}>
+              <h3>Set your goal with self-reward</h3>
+              <p className={styles.description}>
+                Setting goals is the first step in the journey, and self-reward
+                helps you keep moving towards your goals.
+              </p>
+            </div>
+          </section>
+          <section className={`${styles.feature} ${styles.progress}`}>
+            <div className={styles.content}>
+              <h3>Track your progress</h3>
+              <p className={styles.description}>
+                You can see the progress of your habits at a glance with
+                calendar
+              </p>
+            </div>
+            <img src={habitcardImg} alt="habitcardImg"></img>
+          </section>
+          <section className={`${styles.feature} ${styles.challenge}`}>
+            <img src={challengelistImg} alt="challengelistImg"></img>
+            <div className={styles.content}>
+              <h3>Participate in group challenge</h3>
+              <p className={styles.description}>
+                Challenge with other users towards the same goal. Anything can
+                be a challenge and you can even create new challenge.
+              </p>
+            </div>
+          </section>
+          <section className={`${styles.feature} ${styles.post}`}>
+            <div className={styles.content}>
+              <h3>Post a picture to complete the challenge of the day</h3>
+              <p className={styles.description}>
+                Pictures are not only proof that you performed the challenge of
+                the day, but also record of your growth.
+              </p>
+            </div>
+            <img src={challengegroupImg} alt="challengegroupImg"></img>
+          </section>
+        </article>
+        <footer className={styles.footer}>
+          <div className={styles['footer-content']}>
+            <div className={styles['logo-contact']}>
+              <div
+                className={styles.logo}
+                onClick={() => {
+                  window.location.replace('/');
+                }}
+              >
+                Habitgram
+              </div>
+              <div className={styles['contact-container']}>
+                <div className={styles.contact}>Contact</div>
+                <div className={styles.email}>suhyeonlee.dev@gmail.com</div>
+              </div>
+            </div>
+            <div className={styles.copyright}>
+              Copyright 2022 Suhyeon Lee. All rights reserved.
+            </div>
           </div>
-          <img src={habitcardImg}></img>
-        </section>
-        <section>
-          <img src={challengelistImg}></img>
-          <div>
-            <h4>Participate in group challenge</h4>
-            <p>
-              Challenge with other users towards the same goal. Anything can be
-              a challenge and you can even create new challenge.
-            </p>
-          </div>
-        </section>
-        <section>
-          <div>
-            <h4>Post a picture to complete the challenge of the day</h4>
-            <p>
-              pictures are not only proof that you performed the challenge of
-              the day, but also record of your growth.
-            </p>
-          </div>
-          <img src={challengegroupImg}></img>
-        </section>
-      </article>
-      <footer>
-        <div>Habitgram</div>
-        <div>
-          <div>Contact</div>
-          <div>suhyeonlee.dev@gmail.com</div>
-        </div>
-        <div>Copyright 2022 Suhyeon Lee. All rights reserved.</div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 };
