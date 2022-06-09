@@ -150,7 +150,8 @@ const GoalCard = ({ goalObj, isOwner }) => {
                 </span>
               </div>
               <span className={styles['card-date']}>
-                {new Date(goalObj.createdAt).toLocaleDateString()}
+                {new Date(goalObj.createdAt).toLocaleDateString('en-GB')}
+                {/* day-month-year format */}
               </span>
             </div>
             <div className={styles['card-content']}>

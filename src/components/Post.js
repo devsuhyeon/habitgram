@@ -65,7 +65,8 @@ const Post = ({ userObj, post, challengeObj }) => {
         <div className={styles['username-date']}>
           <span className={styles['username']}>{post.displayName}</span>
           <span className={styles['date']}>
-            {new Date(post.createdAt).toLocaleString()}
+            {new Date(post.createdAt).toLocaleString('en-GB')}
+            {/* day-month-year format */}
           </span>
         </div>
       </div>
