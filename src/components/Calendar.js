@@ -86,21 +86,23 @@ const Calendar = ({
         <div className={styles.day}>F</div>
         <div className={styles.day}>S</div>
       </div>
-      <div
-        className={`${styles.dates} ${editing ? '' : styles['non-editing']}`}
-      >
-        {dates.map((date, index) => (
-          <CalendarDate
-            key={index}
-            year={year}
-            month={month}
-            date={date}
-            selectedDateList={selectedDateList}
-            onSelectDate={onSelectDate}
-            onSelectCancel={onSelectCancel}
-            calendarColor={calendarColor}
-          />
-        ))}
+      <div className={styles['dates-container']}>
+        <div
+          className={`${styles.dates} ${editing ? '' : styles['non-editing']}`}
+        >
+          {dates.map((date, index) => (
+            <CalendarDate
+              key={index}
+              year={year}
+              month={month}
+              date={date}
+              selectedDateList={selectedDateList}
+              onSelectDate={onSelectDate}
+              onSelectCancel={onSelectCancel}
+              calendarColor={calendarColor}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 .calendar {
-  width: 14rem;
-  height: 15rem;
+  width: 12.8rem;
+  height: 13.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,6 +48,7 @@
 .nav-month {
   width: 7.4rem;
   text-align: center;
+  font-size: var(--font-small);
   color: white;
   user-select: none;
 }
@@ -64,13 +65,13 @@
   height: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-left: 0.2rem;
+  justify-content: space-evenly;
   user-select: none;
+  padding: 0 0.2rem;
 }
 
 .day {
-  width: 1.5rem;
+  width: 1.2rem;
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
@@ -79,12 +80,19 @@
   color: var(--color-medium-grey);
 }
 
+.dates-container {
+  /* display: flex; */
+  /* justify-content: center; */
+  padding: 0 0.2rem;
+  margin: 0 auto;
+}
+
 .dates {
-  width: 100%;
+  width: 12.8rem;
   display: flex;
   flex-wrap: wrap;
   font-size: 0.8rem;
-  padding-left: 0.4rem;
+  /* padding-left: 0.4rem; */
 }
 
 .dates.non-editing {
@@ -93,17 +101,17 @@
 }
 
 .date {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.2rem;
+  margin: 0.2rem 0.27rem;
   cursor: pointer;
 }
 
 .date:hover {
-  border: 0.15rem solid var(--color-medium-grey);
+  border: 0.1rem solid var(--color-medium-grey);
   border-radius: var(--size-border-radius-small);
 }
 
