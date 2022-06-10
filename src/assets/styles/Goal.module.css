@@ -4,6 +4,7 @@
 }
 
 .page-description {
+  font-size: var(--font-small);
   font-weight: var(--weight-regular);
   line-height: 1.5;
   color: var(--color-grey);
@@ -14,7 +15,7 @@
   align-self: flex-end;
   position: relative;
   top: -2.2rem;
-  right: 4.4rem;
+  right: 2rem;
   width: 8.2rem;
   height: 2rem;
   font-size: var(--font-tiny);
@@ -26,12 +27,19 @@
 }
 
 .add-goal-btn:hover {
-  background-color: var(--color-light-white);
-  color: var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-orange);
+  border: 1px solid var(--color-orange);
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  width: 72rem;
+  margin: 0 auto;
 }
 
 .cards {
-  width: 70rem;
   display: flex;
   flex-wrap: wrap;
 }

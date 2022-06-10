@@ -58,14 +58,16 @@ const Goal = ({ userObj }) => {
         <button className={styles['add-goal-btn']} onClick={onSetNewGoal}>
           Set a new goal
         </button>
-        <div className={styles.cards}>
-          {goals.map((goal) => (
-            <GoalCard
-              key={goal.id}
-              goalObj={goal}
-              isOwner={goal.creatorId === userObj.uid}
-            />
-          ))}
+        <div className={styles['cards-container']}>
+          <div className={styles.cards}>
+            {goals.map((goal) => (
+              <GoalCard
+                key={goal.id}
+                goalObj={goal}
+                isOwner={goal.creatorId === userObj.uid}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
