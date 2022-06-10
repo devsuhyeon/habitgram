@@ -1,26 +1,26 @@
 .profile {
   display: flex;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2.6rem;
 }
 
 .profile-icon {
-  font-size: 5rem;
+  font-size: 4.6rem;
   color: var(--color-light-grey);
   margin-right: 1.4rem;
 }
 
 .profile-username {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: var(--weight-semi-bold);
 }
 
 .nav {
-  width: 68.5rem;
+  width: 74rem;
   display: flex;
   flex-direction: column;
   margin: 2rem 0 2.5rem;
-  border-bottom: 2.5px solid rgb(230, 230, 230);
+  border-bottom: 2px solid rgb(230, 230, 230);
 }
 
 .nav-menu-container {
@@ -29,7 +29,7 @@
 }
 
 .nav-menu {
-  font-size: 1rem;
+  font-size: var(--font-tiny);
   font-weight: var(--weight-semi-bold);
   color: var(--color-grey);
   padding: 0.5rem 1rem;
@@ -41,19 +41,19 @@
 
 .active-bar {
   width: 9.8rem;
-  height: 2px;
+  height: 1.5px;
   background-color: var(--color-black);
-  margin-bottom: -3px;
+  margin-bottom: -2px;
   transition: all 300ms ease;
 }
 
 .active-bar.goals {
-  margin-left: 16.5rem;
+  margin-left: 18.3rem;
 }
 
 .active-bar.feed {
-  width: 9rem;
-  margin-left: 43.1rem;
+  width: 8.8rem;
+  margin-left: 46.7rem;
 }
 
 .goals {
@@ -61,8 +61,17 @@
   flex-wrap: wrap;
 }
 
+.goals-container {
+  width: 72rem;
+  margin: 0 auto;
+}
+
+.feed-container {
+  width: 68.4rem;
+  margin: 0 auto;
+}
+
 .feed {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
 }

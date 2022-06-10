@@ -84,25 +84,29 @@ const MyPage = ({ userObj }) => {
           } ${content === 'feed' && styles.feed}`}
         ></div>
       </div>
-      {content === 'goals' && (
-        <div className={styles.goals}>
-          {goals.map((goal) => (
-            <GoalCard key={goal.id} goalObj={goal} isOwner={true} />
-          ))}
-        </div>
-      )}
-      {content === 'feed' && (
-        <div className={styles.feed}>
-          {userObj.userPosts.map((post, index) => (
-            <Post
-              key={index}
-              userObj={userObj}
-              post={post}
-              challengeObj={getChallengeObj(post)}
-            />
-          ))}
-        </div>
-      )}
+      <div className={styles['goals-container']}>
+        {content === 'goals' && (
+          <div className={styles.goals}>
+            {goals.map((goal) => (
+              <GoalCard key={goal.id} goalObj={goal} isOwner={true} />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className={styles['feed-container']}>
+        {content === 'feed' && (
+          <div className={styles.feed}>
+            {userObj.userPosts.map((post, index) => (
+              <Post
+                key={index}
+                userObj={userObj}
+                post={post}
+                challengeObj={getChallengeObj(post)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
