@@ -1,12 +1,13 @@
 import { dbService, storageService } from 'fbase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { deleteObject, ref } from 'firebase/storage';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import ReportForm from './ReportForm';
 import styles from 'assets/styles/Post.module.css';
 import Modal from './Modal';
+import { getUserFromDB } from 'components/App';
 
 const Post = ({ userObj, post, challengeObj }) => {
   const [reporting, setReporting] = useState(false);
@@ -14,6 +15,13 @@ const Post = ({ userObj, post, challengeObj }) => {
   const userRef = doc(dbService, 'user', userObj.DBid);
   const urlRef = ref(storageService, post.previewUrl);
   const isOwner = post.creatorId === userObj.uid;
+  const [userDB, setUserDB] = useState();
+
+  useEffect(() => {
+    getUserFromDB(userObj).then((result) => {
+      setUserDB(result);
+    });
+  }, []);
 
   const onReportClick = () => {
     setReporting(true);
@@ -38,13 +46,10 @@ const Post = ({ userObj, post, challengeObj }) => {
       });
 
       // Delete this post from user database
-      const newUserPosts = deletePostFromDB(userObj.userPosts);
+      const newUserPosts = deletePostFromDB(userDB.userPosts);
       await updateDoc(userRef, {
         userPosts: newUserPosts,
       });
-
-      // Delete this post from user obj
-      userObj.userPosts = newUserPosts;
 
       // Delete picture from storage
       await deleteObject(urlRef);

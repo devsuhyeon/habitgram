@@ -5,15 +5,19 @@ import GoalCard from 'components/GoalCard';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import styles from 'assets/styles/MyPage.module.css';
+import { getUserFromDB } from 'components/App';
 
 const MyPage = ({ userObj }) => {
   const [content, setContent] = useState('goals');
   const [goals, setGoals] = useState([]);
-  const challenges = userObj.participatingChallenges;
+  const [userDB, setUserDB] = useState();
 
   useEffect(() => {
     getGoalsFromDB().then((goalDB) => {
       setGoals(goalDB);
+    });
+    getUserFromDB(userObj).then((result) => {
+      setUserDB(result);
     });
   }, []);
 
@@ -31,7 +35,7 @@ const MyPage = ({ userObj }) => {
   };
 
   const getChallengeObj = (post) => {
-    const challengeObj = challenges.filter(
+    const challengeObj = userDB.participatingChallenges.filter(
       (challenge) => challenge.id === post.challengeId
     );
     return challengeObj[0];
@@ -96,7 +100,7 @@ const MyPage = ({ userObj }) => {
       <div className={styles['feed-container']}>
         {content === 'feed' && (
           <div className={styles.feed}>
-            {userObj.userPosts.map((post, index) => (
+            {userDB.userPosts.map((post, index) => (
               <Post
                 key={index}
                 userObj={userObj}

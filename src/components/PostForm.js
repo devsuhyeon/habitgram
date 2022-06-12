@@ -1,9 +1,10 @@
 import { dbService, storageService } from 'fbase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from 'assets/styles/PostForm.module.css';
+import { getUserFromDB } from 'components/App';
 
 const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
   const fileInput = useRef();
@@ -11,6 +12,13 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
   const [comment, setComment] = useState('');
   const challengeRef = doc(dbService, 'challenge', challengeObj.id);
   const userRef = doc(dbService, 'user', userObj.DBid);
+  const [userDB, setUserDB] = useState();
+
+  useEffect(() => {
+    getUserFromDB(userObj).then((result) => {
+      setUserDB(result);
+    });
+  }, []);
 
   const onFileChange = (event) => {
     const {
@@ -58,11 +66,8 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
 
     // Update user posts in user database
     await updateDoc(userRef, {
-      userPosts: [newPost, ...userObj.userPosts],
+      userPosts: [newPost, ...userDB.userPosts],
     });
-
-    // Update user posts in user obj
-    userObj.userPosts = [newPost, ...userObj.userPosts];
 
     setPreview('');
     setComment('');
