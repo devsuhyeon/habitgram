@@ -10,13 +10,15 @@ import Modal from 'components/Modal';
 const Habit = ({ userObj }) => {
   const [creatingHabit, setCreatingHabit] = useState(false);
   const [habits, setHabits] = useState([]);
+  const [isCardDeleted, setIsCardDeleted] = useState(false);
 
   useEffect(() => {
     // Get habits from database
     getHabitsFromDB().then((habitList) => {
       setHabits(habitList);
     });
-  }, [creatingHabit]);
+    setIsCardDeleted(false);
+  }, [creatingHabit, isCardDeleted]);
 
   const getHabitsFromDB = async () => {
     let habitArr = [];
@@ -63,7 +65,11 @@ const Habit = ({ userObj }) => {
           )}
         </div>
         {habits.map((habit) => (
-          <HabitCard key={habit.id} habit={habit} />
+          <HabitCard
+            key={habit.id}
+            habit={habit}
+            setIsCardDeleted={setIsCardDeleted}
+          />
         ))}
       </div>
     </div>

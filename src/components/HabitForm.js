@@ -53,7 +53,7 @@ const HabitForm = ({ userObj, onSubmitForm, onCancelClick }) => {
           required
           onChange={onChange}
         />
-        <label className={styles.label}>Goal card color</label>
+        <label className={styles.label}>Habit card color</label>
         <div className={styles.colors}>
           <div
             className={`${styles.color} ${styles.yellow} ${

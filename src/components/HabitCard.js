@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from './Calendar';
 import { dbService } from 'fbase';
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
@@ -6,7 +6,7 @@ import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { MdDelete } from 'react-icons/md';
 import styles from 'assets/styles/HabitCard.module.css';
 
-const HabitCard = ({ habit }) => {
+const HabitCard = ({ habit, setIsCardDeleted }) => {
   const [editing, setEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(habit.title);
   // set selectedDateList with the selected dates stored in the database
@@ -16,6 +16,8 @@ const HabitCard = ({ habit }) => {
   const habitCardRef = doc(dbService, 'habit', `${habit.id}`);
   const [monthCount, setMonthCount] = useState(0);
 
+  useEffect(() => {}, [editing]);
+
   const onEditCard = () => {
     setEditing(true);
   };
@@ -24,6 +26,7 @@ const HabitCard = ({ habit }) => {
     const ok = window.confirm('Are you sure you want to delete this habit?');
     if (ok) {
       // Delete habit card
+      setIsCardDeleted(true);
       await deleteDoc(habitCardRef);
     }
   };
@@ -40,7 +43,8 @@ const HabitCard = ({ habit }) => {
       title: newTitle,
       selectedDateList,
     });
-    // Update selectedDateList saved in local
+    // Update title and selectedDateList saved in local
+    habit.title = newTitle;
     habit.selectedDateList = selectedDateList;
 
     setEditing(false);
