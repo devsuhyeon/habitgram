@@ -42,6 +42,22 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
     setComment(value);
   };
 
+  const convertFrequencyToNum = () => {
+    switch (challengeObj.frequency) {
+      case 'everyday':
+        return 7;
+      case 'five':
+        return 5;
+      case 'three':
+        return 3;
+      case 'twice':
+        return 2;
+      case 'once':
+        return 1;
+      default:
+    }
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let previewUrl = '';
@@ -67,6 +83,35 @@ const PostForm = ({ challengeObj, userObj, onUploadCancel, onPostSubmit }) => {
     // Update user posts in user database
     await updateDoc(userRef, {
       userPosts: [newPost, ...userDB.userPosts],
+    });
+
+    // Update post uploaded date and achievement rate
+    const participantsList = challengeObj.participantsList;
+    const participantObj = participantsList.filter(
+      (participant) => participant.id === userObj.uid
+    )[0];
+    const newParticipantObj = { ...participantObj };
+    // Update post uploaded date
+    newParticipantObj.uploadDates = [
+      newPost.createdAt,
+      ...newParticipantObj.uploadDates,
+    ];
+    // Update achievement rate
+    // achievement = number of posts / (frequency * weeks) * 100
+    newParticipantObj.achievement = Math.floor(
+      (newParticipantObj.uploadDates.length /
+        (convertFrequencyToNum() * (challengeObj.days / 7))) *
+        100
+    );
+    // Replace existing participant obj to updated participant obj
+    participantsList.splice(
+      participantsList.indexOf(participantObj),
+      1,
+      newParticipantObj
+    );
+
+    await updateDoc(challengeRef, {
+      participantsList: [...participantsList],
     });
 
     setPreview('');

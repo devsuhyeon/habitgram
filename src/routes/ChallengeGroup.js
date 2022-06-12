@@ -7,6 +7,7 @@ import PostForm from 'components/PostForm';
 import React, { useEffect, useState } from 'react';
 import styles from 'assets/styles/ChallengeGroup.module.css';
 import Modal from 'components/Modal';
+import { FaUserCircle } from 'react-icons/fa';
 
 export const getChallengeObjFromDB = async (challengeId, setChallengeObj) => {
   const q = query(collection(dbService, 'challenge'));
@@ -33,7 +34,25 @@ const ChallengeGroup = ({ userObj }) => {
 
   const onUploadPicture = (event) => {
     event.preventDefault();
-    setUploading(true);
+
+    let isUploaded = false;
+
+    const participantObj = challengeObj.participantsList.filter(
+      (participant) => participant.id === userObj.uid
+    )[0];
+
+    //Check if there are any posts posted today
+    participantObj.uploadDates.map((uploadDate) => {
+      if (
+        new Date(uploadDate).toLocaleDateString() ===
+        new Date().toLocaleDateString()
+      ) {
+        isUploaded = true;
+        alert('Post can only be uploaded once per day.');
+        return;
+      }
+    });
+    !isUploaded && setUploading(true);
   };
 
   const onUploadCancel = (event) => {
@@ -44,6 +63,7 @@ const ChallengeGroup = ({ userObj }) => {
   const onPostSubmit = () => {
     setUploading(false);
   };
+
   return (
     <div className="main-page">
       {challengeObj && (
@@ -95,15 +115,30 @@ const ChallengeGroup = ({ userObj }) => {
               Upload picture
             </button>
           </div>
-          <div className={styles.posts}>
-            {challengeObj.challengePosts.map((post, index) => (
-              <Post
-                key={index}
-                userObj={userObj}
-                post={post}
-                challengeObj={challengeObj}
-              />
+          <div className={styles.progress}>
+            {challengeObj.participantsList.map((participant) => (
+              <div key={participant.id} className={styles.user}>
+                <FaUserCircle className={styles.icon} />
+                <div className={styles.displayName}>
+                  {participant.displayName}
+                </div>
+                <div className={styles.achievement}>
+                  {participant.achievement}%
+                </div>
+              </div>
             ))}
+          </div>
+          <div className={styles['posts-container']}>
+            <div className={styles.posts}>
+              {challengeObj.challengePosts.map((post, index) => (
+                <Post
+                  key={index}
+                  userObj={userObj}
+                  post={post}
+                  challengeObj={challengeObj}
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}

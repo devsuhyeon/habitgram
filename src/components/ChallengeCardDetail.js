@@ -35,7 +35,12 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
       // update participants list in challenge database
       await updateDoc(challengeRef, {
         participantsList: [
-          { id: userObj.uid, displayName: userObj.displayName, achievement: 0 },
+          {
+            id: userObj.uid,
+            displayName: userObj.displayName,
+            achievement: 0,
+            uploadDates: [],
+          },
           ...challengeObj.participantsList,
         ],
       });

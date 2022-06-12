@@ -67,7 +67,12 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
       description,
       participants: 1,
       participantsList: [
-        { id: userObj.uid, displayName: userObj.displayName, achievement: 0 },
+        {
+          id: userObj.uid,
+          displayName: userObj.displayName,
+          achievement: 0,
+          uploadDates: [],
+        },
       ],
       createdAt: Date.now(),
       creatorId: userObj.uid,

@@ -53,6 +53,29 @@ const Post = ({ userObj, post, challengeObj }) => {
 
       // Delete picture from storage
       await deleteObject(urlRef);
+
+      // Delete post uploaded date from participantObj.
+      // Posts are limited to upload only once a day, but if a user deletes a post,
+      // the post uploaded date also need to be deleted so that the user can re-upload the post.
+      const participantsList = challengeObj.participantsList;
+      const participantObj = participantsList.filter(
+        (participant) => participant.id === userObj.uid
+      )[0];
+      const newParticipantObj = { ...participantObj };
+      newParticipantObj.uploadDates = newParticipantObj.uploadDates.filter(
+        (uploadDate) => uploadDate !== post.createdAt
+      );
+
+      // Replace existing participant obj to updated participant obj
+      participantsList.splice(
+        participantsList.indexOf(participantObj),
+        1,
+        newParticipantObj
+      );
+
+      await updateDoc(challengeRef, {
+        participantsList: [...participantsList],
+      });
     }
   };
 
