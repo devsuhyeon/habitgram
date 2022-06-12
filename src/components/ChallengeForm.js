@@ -8,8 +8,9 @@ import {
   where,
 } from 'firebase/firestore';
 import { dbService } from 'fbase';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from 'assets/styles/ChallengeForm.module.css';
+import { getUserFromDB } from 'components/App';
 
 const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
   const [title, setTitle] = useState('');
@@ -19,6 +20,13 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
   const [frequency, setFrequency] = useState('');
   const [description, setDescription] = useState('');
   const userRef = doc(dbService, 'user', userObj.DBid);
+  const [userDB, setUserDB] = useState();
+
+  useEffect(() => {
+    getUserFromDB(userObj).then((result) => {
+      setUserDB(result);
+    });
+  }, []);
 
   const onChange = (event) => {
     const {
@@ -58,7 +66,9 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
       frequency,
       description,
       participants: 1,
-      participantsList: [userObj.uid],
+      participantsList: [
+        { id: userObj.uid, displayName: userObj.displayName, achievement: 0 },
+      ],
       createdAt: Date.now(),
       creatorId: userObj.uid,
       displayName: userObj.displayName,
@@ -75,12 +85,12 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
 
     // Read challenge database to get challenge obj with challenge DBid
     let challengeObjFromDB;
-    const q = query(
+    const challengeObjQuery = query(
       collection(dbService, 'challenge'),
       where('createdAt', '==', challengeObj.createdAt)
     );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
+    const challengeObjQuerySnapshot = await getDocs(challengeObjQuery);
+    challengeObjQuerySnapshot.forEach((doc) => {
       challengeObjFromDB = { id: doc.id, ...doc.data() };
     });
 
@@ -88,15 +98,9 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
     await updateDoc(userRef, {
       participatingChallenges: [
         challengeObjFromDB,
-        ...userObj.participatingChallenges,
+        ...userDB.participatingChallenges,
       ],
     });
-
-    // update participating challenges in userObj
-    userObj.participatingChallenges = [
-      challengeObjFromDB,
-      ...userObj.participatingChallenges,
-    ];
 
     setTitle('');
     setCategory('');

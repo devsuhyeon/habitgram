@@ -2,17 +2,25 @@ import CategoryImg from './CategoryImg';
 import { dbService } from 'fbase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { MdClose } from 'react-icons/md';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from 'assets/styles/ChallengeCardDetail.module.css';
+import { getUserFromDB } from 'components/App';
 
 const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
   const navigate = useNavigate();
+  const [userDB, setUserDB] = useState();
   const challengeRef = doc(dbService, 'challenge', challengeObj.id);
   const userRef = doc(dbService, 'user', userObj.DBid);
   const onCardClose = () => {
     onCardCloseClick();
   };
+
+  useEffect(() => {
+    getUserFromDB(userObj).then((result) => {
+      setUserDB(result);
+    });
+  }, []);
 
   const onParticipateClick = async () => {
     const ok = window.confirm(
@@ -26,22 +34,19 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
 
       // update participants list in challenge database
       await updateDoc(challengeRef, {
-        participantsList: [userObj.uid, ...challengeObj.participantsList],
+        participantsList: [
+          { id: userObj.uid, displayName: userObj.displayName, achievement: 0 },
+          ...challengeObj.participantsList,
+        ],
       });
 
       // update participating challenges in user database
       await updateDoc(userRef, {
         participatingChallenges: [
           challengeObj,
-          ...userObj.participatingChallenges,
+          ...userDB.participatingChallenges,
         ],
       });
-
-      // update participating challenges in userObj
-      userObj.participatingChallenges = [
-        challengeObj,
-        ...userObj.participatingChallenges,
-      ];
 
       navigate(`/challenge/challengegroup/${challengeObj.id}`);
     }

@@ -35,19 +35,6 @@ function App() {
     });
   }, []);
 
-  const getUserFromDB = async (user) => {
-    let userDB;
-    const q = query(
-      collection(dbService, 'user'),
-      where('uid', '==', user.uid)
-    );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      userDB = { id: doc.id, ...doc.data() };
-    });
-    return userDB;
-  };
-
   const addNewUserToDB = async (user) => {
     try {
       const newUserObj = {
@@ -70,8 +57,6 @@ function App() {
       DBid: userDB.id,
       displayName: userDB.displayName,
       uid: userDB.uid,
-      participatingChallenges: userDB.participatingChallenges,
-      userPosts: userDB.userPosts,
     });
   };
 
@@ -86,4 +71,15 @@ function App() {
   );
 }
 
+const getUserFromDB = async (user) => {
+  let userDB;
+  const q = query(collection(dbService, 'user'), where('uid', '==', user.uid));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    userDB = { id: doc.id, ...doc.data() };
+  });
+  return userDB;
+};
+
 export default App;
+export { getUserFromDB };
