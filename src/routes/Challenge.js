@@ -2,7 +2,14 @@ import ChallengeCard from 'components/ChallengeCard';
 import ChallengeCardDetail from 'components/ChallengeCardDetail';
 import ChallengeForm from 'components/ChallengeForm';
 import { dbService } from 'fbase';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  updateDoc,
+} from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -26,9 +33,44 @@ const Challenge = ({ userObj }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      setChallenges(challengeArr);
+      checkChallengeStatus(challengeArr);
+      getScheduledChallenges(challengeArr); // Only scheduled challenges appear in the challenge list
     });
   }, [openedCard]);
+
+  const checkChallengeStatus = (challengeArr) => {
+    challengeArr.forEach((challenge) => {
+      const challengeStatus = challenge.status;
+      let currentStatus;
+      const startDate = new Date(challenge.startDate);
+      const endDate = new Date(challenge.endDate);
+      const today = new Date();
+      if (endDate < today) {
+        currentStatus = 'finished';
+      } else if (startDate > today) {
+        currentStatus = 'scheduled';
+      } else {
+        currentStatus = 'inProgress';
+      }
+      if (challengeStatus !== currentStatus) {
+        updateChallengeStatus(challenge.id, currentStatus);
+      }
+    });
+  };
+
+  const updateChallengeStatus = async (challengeId, currentStatus) => {
+    const challengeRef = doc(dbService, 'challenge', `${challengeId}`);
+    await updateDoc(challengeRef, {
+      status: currentStatus,
+    });
+  };
+
+  const getScheduledChallenges = (challengeArr) => {
+    const filteredList = challengeArr.filter(
+      (challenge) => challenge.status === 'scheduled'
+    );
+    setChallenges(filteredList);
+  };
 
   const onCreateClick = (event) => {
     event.preventDefault();

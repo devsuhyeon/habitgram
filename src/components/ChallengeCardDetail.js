@@ -53,7 +53,7 @@ const ChallengeCardDetail = ({ userObj, challengeObj, onCardCloseClick }) => {
         ],
       });
 
-      navigate(`/challenge/challengegroup/${challengeObj.id}`);
+      alert('It has been added to My Challenge.');
     }
   };
 

@@ -21,11 +21,11 @@ const MyChallenge = ({ userObj }) => {
   userChallenges &&
     userChallenges.forEach((userChallenge) => {
       const challengeStatus = userChallenge.status;
-      if (challengeStatus === 'participating') {
+      if (challengeStatus === 'inProgress') {
         participating.push(userChallenge);
       } else if (challengeStatus === 'scheduled') {
         scheduled.push(userChallenge);
-      } else if (challengeStatus === 'past') {
+      } else if (challengeStatus === 'finished') {
         past.push(userChallenge);
       }
     });
@@ -44,7 +44,7 @@ const MyChallenge = ({ userObj }) => {
       </div>
       <div>
         <div>
-          <h3>Currently participating in</h3>
+          <h3>In progress</h3>
         </div>
         <div className={styles.cards}>
           {participating.map((userChallenge) => (
@@ -73,7 +73,7 @@ const MyChallenge = ({ userObj }) => {
         </div>
       </div>
       <div>
-        <h3>Past challenges</h3>
+        <h3>Finished</h3>
         <div className={styles.cards}>
           {past.map((userChallenge) => (
             <div
