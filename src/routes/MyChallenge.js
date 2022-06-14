@@ -31,7 +31,21 @@ const MyChallenge = ({ userObj }) => {
     });
 
   const onCardClick = (challengeObj) => {
+    if (challengeObj.status === 'scheduled') {
+      return;
+    }
     navigate(`/challenge/challengegroup/${challengeObj.id}`);
+  };
+
+  const onScheduledCardClick = () => {
+    alert('This challenge has not started yet.');
+  };
+
+  const getDaysLeft = (userChallenge) => {
+    const startDate = new Date(userChallenge.startDate);
+    const today = new Date();
+    const diffDate = startDate.getTime() - today.getTime();
+    return Math.floor(diffDate / (1000 * 3600 * 24));
   };
 
   return (
@@ -63,11 +77,15 @@ const MyChallenge = ({ userObj }) => {
             <div
               key={userChallenge.id}
               className={`${styles['card-container']} ${styles.scheduled}`}
+              onClick={onScheduledCardClick}
             >
               <ChallengeCard
                 challengeObj={userChallenge}
                 onCardClick={onCardClick}
               />
+              <div className={styles['days-left']}>
+                D-{getDaysLeft(userChallenge)}
+              </div>
             </div>
           ))}
         </div>

@@ -1,0 +1,41 @@
+.header-container {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.previous-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: -3rem;
+  color: var(--color-black);
+  font-size: var(--font-medium);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-container.scheduled,
+.card-container.past {
+  width: 15.8rem;
+  height: 13.8rem;
+  position: relative;
+  margin-bottom: 1.6rem;
+  margin-right: 2rem;
+  opacity: 65%;
+}
+
+.days-left {
+  width: 7rem;
+  height: 1.8rem;
+  position: absolute;
+  top: 3.2rem;
+  left: 4.4rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+  font-weight: var(--weight-medium);
+  line-height: 1.8;
+  cursor: pointer;
+}
