@@ -1,7 +1,7 @@
 import GoalForm from 'components/GoalForm';
 import React, { useEffect, useState } from 'react';
 import { dbService } from 'fbase';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import GoalCard from 'components/GoalCard';
 import styles from 'assets/styles/Goal.module.css';
 import Modal from 'components/Modal';
@@ -12,7 +12,10 @@ const Goal = ({ userObj }) => {
 
   useEffect(() => {
     // Get goals from database
-    const q = query(collection(dbService, 'goal'));
+    const q = query(
+      collection(dbService, 'goal'),
+      orderBy('createdAt', 'desc')
+    );
     onSnapshot(q, (snapshot) => {
       const goalArr = snapshot.docs.map((doc) => ({
         id: doc.id,

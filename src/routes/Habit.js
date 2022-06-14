@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import { BiPlus } from 'react-icons/bi';
 import HabitCard from 'components/HabitCard';
@@ -24,7 +24,8 @@ const Habit = ({ userObj }) => {
     let habitArr = [];
     const q = query(
       collection(dbService, 'habit'),
-      where('creatorId', '==', userObj.uid)
+      where('creatorId', '==', userObj.uid),
+      orderBy('createdAt', 'desc')
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

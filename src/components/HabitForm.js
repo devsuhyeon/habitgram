@@ -27,6 +27,7 @@ const HabitForm = ({ userObj, onSubmitForm, onCancelClick }) => {
       creatorId: userObj.uid,
       selectedDateList: [],
       calendarColor: color,
+      createdAt: Date.now(),
     };
     try {
       // Write new habit obj to database
