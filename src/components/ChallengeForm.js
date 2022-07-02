@@ -57,6 +57,12 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    if (new Date(endDate) < new Date(startDate)) {
+      alert('End date must be later than start date');
+      return;
+    }
+
     const challengeObj = {
       title,
       category,
@@ -116,6 +122,16 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
 
     onSubmitForm();
   };
+
+  const getToday = () => {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = `${yyyy}-${mm}-${dd}`;
+    return today;
+  };
+
   return (
     <div className={styles['challenge-form-container']}>
       <div className={styles['challenge-form-title']}>
@@ -163,6 +179,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
               type="date"
               required
               value={startDate}
+              min={getToday()}
               onChange={onChange}
             ></input>
           </div>
@@ -176,6 +193,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
               type="date"
               required
               value={endDate}
+              min={getToday()}
               onChange={onChange}
             ></input>
           </div>
