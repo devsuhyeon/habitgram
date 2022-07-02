@@ -9,7 +9,7 @@
 
 .my-challenge-btn {
   width: 9.4rem;
-  height: 2.2rem;
+  height: 2rem;
   border: 2px solid var(--color-orange);
   border-radius: var(--size-border-radius-regular);
   margin-left: 2rem;
@@ -17,7 +17,7 @@
 }
 
 .my-challenge-btn:hover {
-  background-color: var(--color-light-white);
+  background-color: var(--color-orange);
   border: none;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .my-challenge-link:hover {
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 .my-challenge-icon {
@@ -89,8 +89,9 @@
 }
 
 .create-challenge-btn:hover {
-  background-color: var(--color-light-white);
-  color: var(--color-black);
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-white);
+  color: var(--color-orange);
 }
 
 /******************/
