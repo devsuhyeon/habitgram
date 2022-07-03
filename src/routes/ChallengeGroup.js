@@ -35,6 +35,11 @@ const ChallengeGroup = ({ userObj }) => {
   const onUploadPicture = (event) => {
     event.preventDefault();
 
+    if (challengeObj.status === 'finished') {
+      alert('This challenge has ended.');
+      return;
+    }
+
     let isUploaded = false;
 
     const participantObj = challengeObj.participantsList.filter(
