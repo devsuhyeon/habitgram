@@ -108,11 +108,16 @@
   align-items: center;
   margin: 0.2rem 0.27rem;
   cursor: pointer;
+  user-select: none;
 }
 
 .date:hover {
   border: 0.1rem solid var(--color-medium-grey);
   border-radius: var(--size-border-radius-small);
+}
+
+.date-empty {
+  pointer-events: none;
 }
 
 .selected {

@@ -34,14 +34,20 @@ const CalendarDate = ({
   };
 
   return (
-    <div
-      className={`${styles.date} ${
-        selected && `${styles.selected} ${styles[calendarColor]}`
-      }`}
-      onClick={toggleSelect}
-    >
-      {date}
-    </div>
+    <>
+      {date ? (
+        <div
+          className={`${styles.date} ${
+            selected && `${styles.selected} ${styles[calendarColor]}`
+          }`}
+          onClick={toggleSelect}
+        >
+          {date}
+        </div>
+      ) : (
+        <div className={`${styles.date} ${styles['date-empty']}`}></div>
+      )}
+    </>
   );
 };
 
