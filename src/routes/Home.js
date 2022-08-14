@@ -95,8 +95,10 @@ const Home = () => {
           <section className={`${styles.feature} ${styles.goal}`}>
             <img src={goalcardImg} alt="goalcardImg"></img>
             <div className={styles.content}>
-              <h3>Set your goal with self-reward</h3>
-              <p className={styles.description}>
+              <h3 className={styles['feature-title']}>
+                Set your goal with self-reward
+              </h3>
+              <p className={styles['feature-description']}>
                 Setting goals is the first step in the journey, and self-reward
                 helps you keep moving towards your goals.
               </p>
@@ -104,8 +106,8 @@ const Home = () => {
           </section>
           <section className={`${styles.feature} ${styles.progress}`}>
             <div className={styles.content}>
-              <h3>Track your progress</h3>
-              <p className={styles.description}>
+              <h3 className={styles['feature-title']}>Track your progress</h3>
+              <p className={styles['feature-description']}>
                 You can see the progress of your habits at a glance with
                 calendar
               </p>
@@ -115,8 +117,10 @@ const Home = () => {
           <section className={`${styles.feature} ${styles.challenge}`}>
             <img src={challengelistImg} alt="challengelistImg"></img>
             <div className={styles.content}>
-              <h3>Participate in group challenge</h3>
-              <p className={styles.description}>
+              <h3 className={styles['feature-title']}>
+                Participate in group challenge
+              </h3>
+              <p className={styles['feature-description']}>
                 Challenge with other users towards the same goal. Anything can
                 be a challenge and you can even create new challenge.
               </p>
@@ -124,8 +128,10 @@ const Home = () => {
           </section>
           <section className={`${styles.feature} ${styles.post}`}>
             <div className={styles.content}>
-              <h3>Post a picture to complete the challenge of the day</h3>
-              <p className={styles.description}>
+              <h3 className={styles['feature-title']}>
+                Post a picture to complete the challenge of the day
+              </h3>
+              <p className={styles['feature-description']}>
                 Pictures are not only proof that you performed the challenge of
                 the day, but also record of your growth.
               </p>
@@ -134,24 +140,22 @@ const Home = () => {
           </section>
         </article>
         <footer className={styles.footer}>
-          <div className={styles['footer-content']}>
-            <div className={styles['logo-contact']}>
-              <div
-                className={styles.logo}
-                onClick={() => {
-                  window.location.replace('/');
-                }}
-              >
-                Habitgram
-              </div>
-              <div className={styles['contact-container']}>
-                <div className={styles.contact}>Contact</div>
-                <div className={styles.email}>suhyeonlee.dev@gmail.com</div>
-              </div>
+          <div className={styles['logo-contact']}>
+            <div
+              className={styles.logo}
+              onClick={() => {
+                window.location.replace('/');
+              }}
+            >
+              Habitgram
             </div>
-            <div className={styles.copyright}>
-              Copyright 2022 Suhyeon Lee. All rights reserved.
+            <div className={styles['contact-container']}>
+              <div className={styles.contact}>Contact</div>
+              <div className={styles.email}>suhyeonlee.dev@gmail.com</div>
             </div>
+          </div>
+          <div className={styles.copyright}>
+            Copyright 2022 Suhyeon Lee. All rights reserved.
           </div>
         </footer>
       </div>

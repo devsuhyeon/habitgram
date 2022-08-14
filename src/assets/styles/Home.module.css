@@ -19,12 +19,12 @@
 }
 
 .nav {
-  width: 100rem;
+  max-width: 100vw;
   height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12rem;
+  padding: 0 15%;
   margin: 0 auto;
 }
 
@@ -35,7 +35,7 @@
 .logo {
   font-size: var(--font-medium);
   font-weight: var(--weight-bold);
-  color: var(--color-orange);
+  color: var(--color-dark-orange);
   cursor: pointer;
 }
 
@@ -53,17 +53,18 @@
 }
 
 .header {
+  max-width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 8rem 12rem 5rem;
+  justify-content: space-between;
+  padding: 8rem 15% 5rem;
 }
 
 .header .content {
-  width: 40rem;
-  padding-right: 2rem;
+  max-width: 26rem;
   padding-bottom: 4rem;
+  margin-right: 5rem;
 }
 
 .header .title {
@@ -71,7 +72,7 @@
 }
 
 .header .description {
-  width: 34rem;
+  max-width: 26rem;
   font-size: var(--font-regular);
   line-height: 1.5;
   color: var(--color-grey);
@@ -95,17 +96,17 @@
 }
 
 .header img {
-  width: 36rem;
-  padding-right: 5rem;
+  max-width: 30rem;
 }
 
 .recommend {
+  max-width: 100vw;
   height: 35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-light-white);
-  padding: 5rem 12rem;
+  padding: 5rem 15%;
 }
 
 .recommend .title {
@@ -113,17 +114,17 @@
 }
 
 .recommend .items {
-  width: 78rem;
+  max-width: 80vw;
   display: flex;
   justify-content: space-evenly;
 }
 
 .recommend .item {
-  width: 22.4rem;
+  width: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.6rem;
+  margin: 0rem 2rem 1.6rem;
 }
 
 .recommend .icon-container {
@@ -150,8 +151,8 @@
 }
 
 .features {
-  width: 100rem;
-  padding: 5rem 10rem;
+  max-width: 100vw;
+  padding: 5rem 15%;
   margin: 0 auto;
 }
 
@@ -167,62 +168,61 @@
 }
 
 .feature .content {
-  width: 34%;
+  width: 26rem;
   height: 8rem;
 }
 
-.feature img {
-  width: 66%;
-}
-
-.feature .description {
+.feature .feature-description {
+  min-width: 16rem;
   font-size: 1.1rem;
   line-height: 1.5;
   color: var(--color-grey);
 }
 
 .goal img {
-  width: 32rem;
+  width: 30rem;
+  margin-right: 2rem;
 }
 
 .progress img {
-  width: 30rem;
+  width: 28rem;
 }
 
 .challenge img {
-  width: 40rem;
+  width: 30rem;
+  margin-right: 2rem;
 }
 
 .post img {
-  width: 40rem;
+  width: 30rem;
 }
 
 .footer {
   display: flex;
-  justify-content: center;
-  background-color: var(--color-orange);
-
-  width: 100vw;
-}
-
-.footer-content {
-  width: 100rem;
-  height: 14rem;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  width: 100vw;
+  height: 14rem;
+  padding: 3rem 15% 2rem;
   color: var(--color-white);
-  padding: 3rem 12rem 1.4rem;
+  background-color: var(--color-orange);
 }
 
 .footer .logo-contact {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer .logo {
+  width: 55vw;
   font-size: var(--font-medium);
   color: var(--color--white);
-  margin-right: 30rem;
+}
+
+.footer .contact-container {
+  width: 30vw;
 }
 
 .footer .contact {
@@ -236,4 +236,173 @@
 
 .footer .copyright {
   font-size: var(--font-tiny);
+}
+
+@media screen and (max-width: 767px) {
+  .nav {
+    height: 3rem;
+    padding: 0 2rem;
+  }
+
+  .logo {
+    font-size: var(--font-regular);
+  }
+
+  .link {
+    font-size: var(--font-micro);
+  }
+
+  .signup {
+    margin-right: 1rem;
+  }
+
+  .header {
+    width: 50rem;
+    flex-direction: column;
+    padding: 6rem 2rem 5rem;
+  }
+
+  .header .content {
+    order: 2;
+    width: 20rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+
+  .header .title {
+    font-size: var(--font-medium);
+  }
+
+  .header .description {
+    font-size: var(--font-micro);
+    width: 20rem;
+  }
+
+  .header .get-started {
+    font-size: var(--font-micro);
+    padding: 0.4rem 0.8rem;
+  }
+
+  .header img {
+    order: 1;
+    width: 16.5rem;
+    padding-right: 0;
+  }
+
+  .recommend {
+    padding: 3rem 2rem;
+    height: 45rem;
+  }
+
+  .recommend .title {
+    font-size: var(--font-medium);
+    margin-bottom: 2.6rem;
+  }
+
+  .recommend .items {
+    flex-direction: column;
+  }
+
+  .recommend .item {
+    width: 14rem;
+    margin-bottom: 2rem;
+  }
+
+  .recommend .icon-container {
+    width: 5.2rem;
+    height: 5.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .recommend .icon {
+    font-size: 2.2rem;
+  }
+
+  .recommend .description {
+    font-size: var(--font-small);
+    width: 16rem;
+  }
+
+  .features {
+    padding: 3rem 2rem;
+  }
+
+  .features .title {
+    font-size: var(--font-medium);
+    margin-bottom: 2.4rem;
+  }
+
+  .feature {
+    height: 20rem;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+  }
+
+  .feature .content {
+    width: 18rem;
+    order: 2;
+    text-align: center;
+  }
+
+  .feature img {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+
+  .feature .feature-title {
+    font-size: var(--font-regular);
+  }
+
+  .feature .feature-description {
+    font-size: var(--font-small);
+  }
+
+  .goal img {
+    width: 15rem;
+  }
+
+  .progress img {
+    width: 14rem;
+  }
+
+  .challenge img {
+    width: 18rem;
+  }
+
+  .post img {
+    width: 16rem;
+  }
+
+  .footer {
+    height: 10rem;
+    padding: 1rem 2rem;
+  }
+
+  .footer .logo-contact {
+    flex-direction: column;
+  }
+
+  .footer .logo {
+    font-size: var(--font-regular);
+    margin-right: 0rem;
+    width: 20vw;
+    margin-bottom: 1rem;
+  }
+
+  .footer .contact-container {
+    width: 20vw;
+  }
+
+  .footer .contact {
+    font-size: var(--font-small);
+  }
+
+  .footer .email {
+    font-size: var(--font-micro);
+  }
+
+  .footer .copyright {
+    font-size: var(--font-micro);
+  }
 }

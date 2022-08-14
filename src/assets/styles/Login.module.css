@@ -161,3 +161,58 @@
   background-color: var(--color-white);
   color: var(--color-dark-sky);
 }
+
+@media screen and (max-width: 767px) {
+  .form {
+    width: 24rem;
+    padding: 2rem 1rem;
+  }
+
+  .google-auth {
+    width: 18rem;
+    font-size: 0.75rem;
+  }
+
+  .google-icon {
+    font-size: 1rem;
+  }
+
+  .other-way-ask {
+    font-size: 0.8rem;
+  }
+
+  .other-way-link {
+    font-size: 0.9rem;
+  }
+
+  .auth-form-container {
+    width: 18rem;
+  }
+
+  .previous-btn {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    font-size: var(--font-regular);
+  }
+
+  .form-type {
+    font-size: var(--font-small);
+  }
+
+  .auth-form {
+    width: 18rem;
+  }
+
+  .auth-form .label {
+    font-size: var(--font-micro);
+  }
+  .auth-form .input {
+    height: 1.6rem;
+  }
+
+  .auth-form .submit {
+    font-size: 0.8rem;
+  }
+}
