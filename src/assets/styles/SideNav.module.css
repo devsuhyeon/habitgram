@@ -1,18 +1,18 @@
 .side-nav {
-  width: 17rem;
+  width: 15rem;
   height: 100vh;
   position: sticky;
   top: 0;
   left: 0;
   border-right: 2.5px solid var(--color-light-white);
-  padding: 0 2.2rem;
+  padding: 0 1.6rem;
 }
 
 .logo {
   color: var(--color-dark-orange);
   font-size: var(--font-medium);
   font-weight: var(--weight-bold);
-  margin: 3rem 0;
+  margin: 2.4rem 0;
   user-select: none;
 }
 
@@ -20,7 +20,7 @@
 /* Pages */
 /*********/
 .pages {
-  width: 100%;
+  min-width: 11rem;
   height: 30%;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
 }
 
 .page {
-  width: 12rem;
+  margin-bottom: 0.8rem;
 }
 
 .page-link {
@@ -39,6 +39,7 @@
   align-items: center;
   color: var(--color-grey);
   border-radius: var(--size-border-radius-regular);
+  border: 2px solid white;
   text-decoration: none;
   outline: none;
 }
@@ -47,6 +48,7 @@
 .page-link:active {
   text-decoration: none;
   color: var(--color-black);
+  border: 2px solid var(--color-light-orange);
 }
 
 .page-link .page-icon {
@@ -76,26 +78,23 @@
 /* Footer */
 /**********/
 .footer {
-  width: 11.2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  left: 2.4rem;
-  bottom: 3rem;
-  margin-top: 16rem;
+  justify-content: center;
+  margin-top: 18rem;
 }
 
 .footer-profile {
   display: flex;
   align-items: center;
+  margin-right: 1.2rem;
 }
 
 .footer .profile-icon {
   width: 1.6rem;
   height: 1.6rem;
   color: var(--color-light-grey);
-  margin-right: 0.7rem;
+  margin-right: 0.6rem;
 }
 
 .footer .profile-displayName {
@@ -118,4 +117,102 @@
 
 .footer-logout:hover {
   color: var(--color-black);
+}
+
+.toggle-btn {
+  display: none;
+  position: absolute;
+  right: 4%;
+  top: 1.2rem;
+  font-size: 1.2rem;
+  color: var(--color-dark-orange);
+}
+
+@media screen and (max-width: 767px) {
+  .side-nav {
+    position: fixed;
+    width: 100vw;
+    height: auto;
+    padding: 0 4%;
+    box-shadow: 1px 4px 12px -1px rgba(87, 87, 87, 0.25);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .logo {
+    width: 100%;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: flex-start;
+    border-bottom: 1px solid var(--color-light-white);
+  }
+
+  .pages {
+    width: 100%;
+    display: none;
+    margin-top: 0.8rem;
+  }
+
+  .pages.active {
+    display: flex;
+  }
+
+  .page {
+    width: 100%;
+  }
+
+  .page-link {
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-link .page-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .page-active .page-icon {
+    background-color: var(--color-light-orange);
+  }
+
+  .page-title {
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    display: none;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid var(--color-light-white);
+  }
+
+  .footer.active {
+    display: flex;
+  }
+
+  .footer .profile-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .footer .profile-displayName {
+    font-size: var(--font-micro);
+  }
+
+  .footer-logout {
+    font-size: 1rem;
+  }
+
+  .toggle-btn {
+    display: block;
+  }
 }

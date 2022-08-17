@@ -11,11 +11,12 @@
   margin-bottom: 0;
 }
 
+.title-btn-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .add-goal-btn {
-  align-self: flex-end;
-  position: relative;
-  top: -2.2rem;
-  right: 2rem;
   width: 8.2rem;
   height: 2rem;
   font-size: var(--font-tiny);
@@ -24,6 +25,7 @@
   background-color: var(--color-orange);
   border-radius: var(--size-border-radius-regular);
   transition: all 100ms ease-in;
+  margin-left: 2rem;
 }
 
 .add-goal-btn:hover {
@@ -35,11 +37,16 @@
 .cards-container {
   display: flex;
   justify-content: center;
-  width: 72rem;
-  margin: 0 auto;
+  margin-top: 1.8rem;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    flex-direction: column;
+  }
 }

@@ -122,3 +122,11 @@
 .count-number.pink {
   color: var(--color-dark-pink);
 }
+
+@media screen and (max-width: 767px) {
+  .habit-card {
+    width: 28rem;
+    height: auto;
+    padding: 1rem 0.8rem;
+  }
+}

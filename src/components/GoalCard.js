@@ -59,7 +59,7 @@ const GoalCard = ({ goalObj, isOwner }) => {
       <div className={`${styles['card-index']} ${styles[goalObj.indexColor]}`}>
         {/* Goal can only be deleted and edited by creator */}
         {/* Edit button and delete button are invisible while editing */}
-        {isOwner && !editing && isOwner && (
+        {!editing && isOwner && (
           <>
             <button className={styles['card-icon']} onClick={toggleEditing}>
               <HiOutlinePencilAlt className={styles['card-edit']} />

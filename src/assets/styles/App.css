@@ -122,6 +122,18 @@ p {
 }
 
 .main-page {
-  width: 74rem;
-  margin: 3rem 8rem;
+  width: 100vw;
+  margin: 3rem 6rem;
+}
+
+@media screen and (max-width: 767px) {
+  #root {
+    flex-direction: column;
+  }
+
+  .main-page {
+    width: 90vw;
+    padding-top: 5rem;
+    margin: 0 auto;
+  }
 }

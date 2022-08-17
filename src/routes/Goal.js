@@ -51,16 +51,18 @@ const Goal = ({ userObj }) => {
       )}
       <div className={styles['page-content-container']}>
         <div>
-          <h2 className={styles['page-title']}>Goal &amp; Reward</h2>
+          <div className={styles['title-btn-wrap']}>
+            <h2 className={styles['page-title']}>Goal &amp; Reward</h2>
+            <button className={styles['add-goal-btn']} onClick={onSetNewGoal}>
+              Set a new goal
+            </button>
+          </div>
           <h4 className={styles['page-description']}>
             Set goals before you set out on your journey and share your goals
             with others. <br />
             It helps you stay motivated and become accountable.
           </h4>
         </div>
-        <button className={styles['add-goal-btn']} onClick={onSetNewGoal}>
-          Set a new goal
-        </button>
         <div className={styles['cards-container']}>
           <div className={styles.cards}>
             {goals.map((goal) => (

@@ -102,3 +102,19 @@
   background-color: var(--color-light-white);
   color: var(--color-black);
 }
+
+@media screen and (max-width: 767px) {
+  .goal-form-container {
+    width: 26rem;
+    height: auto;
+    padding: 2.5rem 3rem;
+  }
+
+  .goal-form-title {
+    font-size: var(--font-small);
+  }
+
+  .goal-form .label {
+    font-size: var(--font-micro);
+  }
+}
