@@ -123,9 +123,9 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
     onSubmitForm();
   };
 
-  const getToday = () => {
+  const getTomorrow = () => {
     let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
+    const dd = String(today.getDate() + 1).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
     today = `${yyyy}-${mm}-${dd}`;
@@ -179,7 +179,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
               type="date"
               required
               value={startDate}
-              min={getToday()}
+              min={getTomorrow()}
               onChange={onChange}
             ></input>
           </div>
@@ -193,7 +193,7 @@ const ChallengeForm = ({ userObj, onCreateCancelClick, onSubmitForm }) => {
               type="date"
               required
               value={endDate}
-              min={getToday()}
+              min={getTomorrow()}
               onChange={onChange}
             ></input>
           </div>
