@@ -31,14 +31,7 @@ const MyChallenge = ({ userObj }) => {
     });
 
   const onCardClick = (challengeObj) => {
-    if (challengeObj.status === 'scheduled') {
-      return;
-    }
     navigate(`/challenge/challengegroup/${challengeObj.id}`);
-  };
-
-  const onScheduledCardClick = () => {
-    alert('This challenge has not started yet.');
   };
 
   const getDaysLeft = (userChallenge) => {
@@ -77,7 +70,6 @@ const MyChallenge = ({ userObj }) => {
             <div
               key={userChallenge.id}
               className={`${styles['card-container']} ${styles.scheduled}`}
-              onClick={onScheduledCardClick}
             >
               <ChallengeCard
                 challengeObj={userChallenge}
@@ -91,7 +83,7 @@ const MyChallenge = ({ userObj }) => {
         </div>
       </div>
       <div>
-        <h3>Finished</h3>
+        <h3>Past</h3>
         <div className={styles.cards}>
           {past.map((userChallenge) => (
             <div

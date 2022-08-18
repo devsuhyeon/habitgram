@@ -35,6 +35,11 @@ const ChallengeGroup = ({ userObj }) => {
   const onUploadPicture = (event) => {
     event.preventDefault();
 
+    if (challengeObj.status === 'scheduled') {
+      alert('This challenge has not started yet.');
+      return;
+    }
+
     if (challengeObj.status === 'finished') {
       alert('This challenge has ended.');
       return;
