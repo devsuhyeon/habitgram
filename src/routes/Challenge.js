@@ -127,18 +127,24 @@ const Challenge = ({ userObj }) => {
       )}
       <div className={styles.header}>
         <h2 className={styles['page-title']}>Challenge</h2>
-        <button className={styles['my-challenge-btn']}>
-          <Link
-            to={`/challenge/mychallenge/${userObj.uid}`}
-            className={styles['my-challenge-link']}
-          >
-            My Challenge
-            <HiOutlineChevronRight className={styles['my-challenge-icon']} />
-          </Link>
+        <Link
+          to={`/challenge/mychallenge/${userObj.uid}`}
+          className={styles['my-challenge-btn']}
+        >
+          My Challenge
+          <HiOutlineChevronRight className={styles['my-challenge-icon']} />
+        </Link>
+      </div>
+      <div className={styles['challenge-list-with-create-btn']}>
+        <h3 className={styles['challenge-list']}>Challenge List</h3>
+        <button
+          className={styles['create-challenge-btn']}
+          onClick={onCreateClick}
+        >
+          Create a challenge
         </button>
       </div>
-      <h3 className={styles['challenge-list']}>Challenge List</h3>
-      <div className={styles['challenge-list-btns']}>
+      <div className={styles['challenge-list-categories']}>
         <div className={styles.categories}>
           <button
             className={`${styles.category} ${
@@ -213,12 +219,6 @@ const Challenge = ({ userObj }) => {
             Others
           </button>
         </div>
-        <button
-          className={styles['create-challenge-btn']}
-          onClick={onCreateClick}
-        >
-          Create a challenge
-        </button>
       </div>
       <div className={styles['cards-container']}>
         <div className={styles.cards}>
@@ -230,7 +230,7 @@ const Challenge = ({ userObj }) => {
             />
           ))}
         </div>
-        <div>
+        <div className={styles['card-detail-container']}>
           {/* // Open card clicked */}
           {openedCard && (
             <ChallengeCardDetail

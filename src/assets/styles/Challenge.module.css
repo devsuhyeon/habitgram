@@ -3,14 +3,16 @@
   align-items: center;
 }
 
-.page-title {
-  user-select: none;
-}
-
 .my-challenge-btn {
   width: 9.4rem;
-  height: 2rem;
-  border: 2px solid var(--color-orange);
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-tiny);
+  font-weight: var(--weight-semi-bold);
+  color: var(--color-orange);
+  border: 1px solid var(--color-orange);
   border-radius: var(--size-border-radius-regular);
   margin-left: 2rem;
   transition: all 100ms ease-in;
@@ -18,21 +20,8 @@
 
 .my-challenge-btn:hover {
   background-color: var(--color-orange);
-  border: none;
-}
-
-.my-challenge-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: var(--font-tiny);
-  font-weight: var(--weight-semi-bold);
-  color: var(--color-black);
-}
-
-.my-challenge-link:hover {
   color: var(--color-white);
+  border: none;
 }
 
 .my-challenge-icon {
@@ -42,17 +31,23 @@
 /******************/
 /* Challenge List */
 /******************/
-.challenge-list {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  user-select: none;
+.challenge-list-with-create-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
 }
 
-.challenge-list-btns {
+.challenge-list {
+  font-size: 1.8rem;
+  margin-right: 1.6rem;
+}
+
+.challenge-list-categories {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .category {
@@ -63,6 +58,7 @@
   font-weight: var(--weight-semi-bold);
   border-radius: var(--size-border-radius-small);
   border: 1px solid var(--color-turquoise);
+  margin-bottom: 0.6rem;
 }
 
 .category:hover {
@@ -83,13 +79,12 @@
   font-weight: var(--weight-semi-bold);
   background-color: var(--color-orange);
   color: var(--color-white);
-  margin-right: 3.8rem;
   border-radius: var(--size-border-radius-regular);
   transition: all 100ms ease-in;
+  border: 1px solid var(--color-orange);
 }
 
 .create-challenge-btn:hover {
-  border: 1px solid var(--color-orange);
   background-color: var(--color-white);
   color: var(--color-orange);
 }
@@ -104,4 +99,22 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cards {
+    justify-content: center;
+    width: auto;
+    order: 1;
+  }
+
+  .card-detail-container {
+    order: 0;
+    position: sticky;
+    top: 12%;
+  }
 }

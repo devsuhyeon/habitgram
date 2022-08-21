@@ -82,11 +82,6 @@ const MyPage = ({ userObj }) => {
             Challenge Feed
           </button>
         </div>
-        <div
-          className={`${styles['active-bar']} ${
-            content === 'goals' && styles.goals
-          } ${content === 'feed' && styles.feed}`}
-        ></div>
       </div>
       <div className={styles['goals-container']}>
         {content === 'goals' && (

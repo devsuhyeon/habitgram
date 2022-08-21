@@ -16,7 +16,7 @@
 }
 
 .nav {
-  width: 74rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 2rem 0 2.5rem;
@@ -37,41 +37,17 @@
 
 .nav-menu.active {
   color: var(--color-black);
-}
-
-.active-bar {
-  width: 9.8rem;
-  height: 1.5px;
-  background-color: var(--color-black);
-  margin-bottom: -2px;
-  transition: all 300ms ease;
-}
-
-.active-bar.goals {
-  margin-left: 18.3rem;
-}
-
-.active-bar.feed {
-  width: 8.8rem;
-  margin-left: 46.7rem;
+  border-bottom: 2px solid black;
 }
 
 .goals {
   display: flex;
   flex-wrap: wrap;
-}
-
-.goals-container {
-  width: 72rem;
-  margin: 0 auto;
-}
-
-.feed-container {
-  width: 68.4rem;
-  margin: 0 auto;
+  justify-content: center;
 }
 
 .feed {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }

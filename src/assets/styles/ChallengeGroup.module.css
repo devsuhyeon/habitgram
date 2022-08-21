@@ -83,12 +83,30 @@
   text-align: end;
 }
 
-.posts-container {
-  width: 68.4rem;
-  margin: 0 auto;
-}
-
 .posts {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  width: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .header-container {
+    position: static;
+    display: flex;
+    align-items: center;
+  }
+
+  .previous-btn {
+    position: static;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  .posts {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 }

@@ -49,55 +49,55 @@ const MyChallenge = ({ userObj }) => {
         </Link>
         <h2>{userObj.displayName}'s Challenge</h2>
       </div>
-      <div>
+      <section className={styles['challenge-list']}>
         <div>
           <h3>In progress</h3>
-        </div>
-        <div className={styles.cards}>
-          {participating.map((userChallenge) => (
-            <ChallengeCard
-              key={userChallenge.id}
-              challengeObj={userChallenge}
-              onCardClick={onCardClick}
-            />
-          ))}
-        </div>
-      </div>
-      <div>
-        <h3>Opening soon</h3>
-        <div className={styles.cards}>
-          {scheduled.map((userChallenge) => (
-            <div
-              key={userChallenge.id}
-              className={`${styles['card-container']} ${styles.scheduled}`}
-            >
+          <div className={styles.cards}>
+            {participating.map((userChallenge) => (
               <ChallengeCard
+                key={userChallenge.id}
                 challengeObj={userChallenge}
                 onCardClick={onCardClick}
               />
-              <div className={styles['days-left']}>
-                D-{getDaysLeft(userChallenge)}
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3>Opening soon</h3>
+          <div className={styles.cards}>
+            {scheduled.map((userChallenge) => (
+              <div
+                key={userChallenge.id}
+                className={`${styles['card-container']} ${styles.scheduled}`}
+              >
+                <ChallengeCard
+                  challengeObj={userChallenge}
+                  onCardClick={onCardClick}
+                />
+                <div className={styles['days-left']}>
+                  D-{getDaysLeft(userChallenge)}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-      <div>
-        <h3>Past</h3>
-        <div className={styles.cards}>
-          {past.map((userChallenge) => (
-            <div
-              key={userChallenge.id}
-              className={`${styles['card-container']} ${styles.past}`}
-            >
-              <ChallengeCard
-                challengeObj={userChallenge}
-                onCardClick={onCardClick}
-              />
-            </div>
-          ))}
+        <div>
+          <h3>Past</h3>
+          <div className={styles.cards}>
+            {past.map((userChallenge) => (
+              <div
+                key={userChallenge.id}
+                className={`${styles['card-container']} ${styles.past}`}
+              >
+                <ChallengeCard
+                  challengeObj={userChallenge}
+                  onCardClick={onCardClick}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .post-form-container {
   width: 34rem;
-  height: 36rem;
+  height: auto;
   background-color: var(--color-white);
   border-radius: var(--size-border-radius-large);
   padding: 3rem 3.8rem;
@@ -12,7 +12,6 @@
   font-size: var(--font-regular);
   font-weight: var(--weight-semi-bold);
   margin-bottom: 1.6rem;
-  user-select: none;
 }
 
 .post-form {
@@ -24,7 +23,6 @@
   font-size: 1rem;
   font-weight: var(--weight-medium);
   display: block;
-  margin-top: 0.8rem;
   margin-bottom: 0.2rem;
 }
 
@@ -34,7 +32,8 @@
 }
 
 .post-form .comment {
-  height: 4.6rem;
+  min-height: 4.6rem;
+  resize: vertical;
   margin-top: 0.2rem;
   margin-bottom: 2.2rem;
 }
@@ -101,4 +100,24 @@
 .post-form .btn.submit:hover {
   background-color: var(--color-light-white);
   color: var(--color-black);
+}
+
+@media screen and (max-width: 767px) {
+  .post-form-container {
+    width: 28rem;
+    padding: 2.2rem 2.8rem;
+  }
+
+  .post-form-title {
+    font-size: var(--font-small);
+    margin-bottom: 1.2rem;
+  }
+
+  .post-form label {
+    font-size: var(--font-tiny);
+  }
+
+  .post-form .comment {
+    margin-bottom: 1.6rem;
+  }
 }

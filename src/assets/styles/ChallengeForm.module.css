@@ -1,6 +1,6 @@
 .challenge-form-container {
   width: 34rem;
-  height: 37rem;
+  height: auto;
   background-color: var(--color-white);
   border-radius: var(--size-border-radius-large);
   padding: 3rem 3.8rem;
@@ -12,7 +12,6 @@
   font-size: var(--font-regular);
   font-weight: var(--weight-semi-bold);
   margin-bottom: 1.6rem;
-  user-select: none;
 }
 
 .challenge-form .label {
@@ -29,7 +28,8 @@
 }
 
 .challenge-form .input-description {
-  height: 4.6rem;
+  min-height: 4.6rem;
+  resize: vertical;
 }
 
 .challenge-form .dates {
@@ -78,4 +78,35 @@
 .challenge-form .btn.submit:hover {
   background-color: var(--color-light-white);
   color: var(--color-black);
+}
+
+@media screen and (max-width: 767px) {
+  .challenge-form-container {
+    width: 26rem;
+    padding: 2.2rem 3.2rem;
+  }
+
+  .challenge-form-title {
+    font-size: var(--font-small);
+  }
+
+  .challenge-form .label {
+    font-size: 0.8rem;
+  }
+
+  .challenge-form .input {
+    height: 1.4rem;
+  }
+
+  .challenge-form .input-description {
+    height: 4.2rem;
+  }
+
+  .challenge-form .date {
+    width: 9rem;
+  }
+
+  .challenge-form .btns {
+    margin-top: 1.4rem;
+  }
 }
