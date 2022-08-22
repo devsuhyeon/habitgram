@@ -20,13 +20,15 @@ const MyChallenge = ({ userObj }) => {
 
   userChallenges &&
     userChallenges.forEach((userChallenge) => {
-      const challengeStatus = userChallenge.status;
-      if (challengeStatus === 'inProgress') {
-        participating.push(userChallenge);
-      } else if (challengeStatus === 'scheduled') {
-        scheduled.push(userChallenge);
-      } else if (challengeStatus === 'finished') {
+      const startDate = new Date(userChallenge.startDate);
+      const endDate = new Date(userChallenge.endDate);
+      const today = new Date();
+      if (endDate < today) {
         past.push(userChallenge);
+      } else if (startDate > today) {
+        scheduled.push(userChallenge);
+      } else {
+        participating.push(userChallenge);
       }
     });
 
@@ -38,7 +40,13 @@ const MyChallenge = ({ userObj }) => {
     const startDate = new Date(userChallenge.startDate);
     const today = new Date();
     const diffDate = startDate.getTime() - today.getTime();
-    return Math.floor(diffDate / (1000 * 3600 * 24));
+    const daysLeft = Math.floor(diffDate / (1000 * 3600 * 24));
+    const hoursLeft = Math.floor(diffDate / (1000 * 3600));
+    if (daysLeft === 0) {
+      return hoursLeft + ' hours';
+    } else {
+      return 'D-' + daysLeft;
+    }
   };
 
   return (
@@ -75,7 +83,7 @@ const MyChallenge = ({ userObj }) => {
                   onCardClick={onCardClick}
                 />
                 <div className={styles['days-left']}>
-                  D-{getDaysLeft(userChallenge)}
+                  {getDaysLeft(userChallenge)}
                 </div>
               </div>
             ))}
