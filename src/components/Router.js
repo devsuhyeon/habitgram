@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Habit from 'routes/Habit';
-import Goal from 'routes/Goal';
-import Challenge from 'routes/Challenge';
-import ChallengeGroup from 'routes/ChallengeGroup';
-import MyPage from 'routes/MyPage';
-import Home from 'routes/Home';
-import Login from 'routes/Login';
-import MyChallenge from 'routes/MyChallenge';
-import Signup from 'routes/Signup';
+import Habit from 'pages/Habit/Habit';
+import Goal from 'pages/Goal/Goal';
+import Challenge from 'pages/Challenge/Challenge';
+import ChallengeGroup from 'pages/Challenge/ChallengeGroup/ChallengeGroup';
+import MyPage from 'pages/MyPage/MyPage';
+import Home from 'pages/Home/Home';
+import Login from 'pages/Login/Login';
+import MyChallenge from 'pages/Challenge/MyChallenge/MyChallenge';
+import Signup from 'pages/Login/Signup';
 import SideNav from './SideNav';
 
 const AppRouter = ({ isLoggedIn, userObj }) => {

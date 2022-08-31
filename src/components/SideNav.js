@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { authService } from 'fbase';
 import { signOut } from 'firebase/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
-import styles from 'assets/styles/SideNav.module.css';
+import styles from 'styles/SideNav.module.css';
 
 // icons
 import { BsCalendarWeek } from 'react-icons/bs';
