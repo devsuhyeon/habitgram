@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# 📆 HabitGram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A community-based habit tracker where users share goals and take on challenges together
 
-## Available Scripts
+<img width="60%" src="https://user-images.githubusercontent.com/93829156/188317635-b845c1cf-da6b-463c-b708-ef5cfaa3c3da.png">
 
-In the project directory, you can run:
+- This is a first project using `React`
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# ✨ Background
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Most of the existing habit tracking platforms were created for personal use. A few habit tracker platforms can share habits with others but lack communication capabilities. Therefore, I decided to develop a community-based habit tracking website that allows users to motivate each other to perform better and keep them moving towards goals.
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 🔗 Link
 
-### `npm run build`
+- [https://habitgram.netlify.app/](https://habitgram.netlify.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 🔧 Skills
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- JavaScript
+- React
+- Firebase
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 🚀 Deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Netlify
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 🛠️ Features
 
-## Learn More
+## Set the goals
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188446669-2b4ceb13-da36-4766-8175-a615bdd53426.gif">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Users can add a new goal card with specific plan, period, and self-reward and share them with other users to build a mindset for goal achievement.
 
-### Code Splitting
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Add habit
 
-### Analyzing the Bundle Size
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188324748-08882819-c201-436c-afbe-58d7a4c47384.gif">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Users can add a habit card by clicking the new habit button.
+- Users can record the dates they completed the habit by selecting it from the calendar.
+- Monthly count and total count help users to track their progress.
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Participate in group challenge
 
-### Advanced Configuration
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188448629-117e71b4-afdb-4693-8fdb-db7c808c7e7a.gif">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Users can create a new challenge or apply for existing group challenge by clicking the participate button.
 
-### Deployment
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## View my challenges
 
-### `npm run build` fails to minify
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188454623-969b4159-aa54-4b39-9150-acd4afa270fb.gif">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Users can check the status of participating group challenges.
+- Challenges are displayed in three states: in progress, opening soon, and past.
+
+<br>
+
+## Carry out the challenge mission
+
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188463862-ccac83f1-757b-4e50-be08-358e8d113e53.gif">
+
+- Users can participate only once per day for each challenge.
+- To complete the mission on the day, users must upload a picture as proof that they performed the challenge.
+- When users complete the mission, the achievement rate (%) increases.
+- Pictures not related to the challenge topic can be reported by other users.
+
+<br>
+
+## View my history
+
+<img width="100%" src="https://user-images.githubusercontent.com/93829156/188468646-ec1f130f-7de1-4a0a-b4fa-e71953b5704e.gif">
+
+- In the My page, users can view their goal cards and pictures uploaded during the group challenges.
+
+<br>
+
+# 📄 Pages
+
+- Home page
+- Sign up / Log in page
+- Goal & Reward page
+- Habit page
+- Challenge page
+  - My challenge
+  - Group Challenge
+- My page
+
+<br>
+
+# 💡 What I learned
+
+- Basics of React
+- How React hooks work and how to use them
+  - useState, useEffect, useNavigate
+- How to handle routing in a single page application
+- Experienced in Firebase
+- Experienced in Promise (async/await)
