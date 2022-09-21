@@ -40,11 +40,15 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .header-container {
     position: static;
     display: flex;
     align-items: center;
+  }
+
+  .header-title {
+    text-align: center;
   }
 
   .previous-btn {
@@ -60,6 +64,14 @@
   }
 
   .cards {
-    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container.scheduled,
+  .card-container.past {
+    width: auto;
+    margin-right: 0;
   }
 }

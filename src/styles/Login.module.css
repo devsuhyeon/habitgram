@@ -162,15 +162,16 @@
   color: var(--color-dark-sky);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .form {
-    width: 24rem;
-    padding: 2rem 1rem;
+    width: 90%;
+    padding: 2rem 1.8rem;
   }
 
   .google-auth {
-    width: 18rem;
+    width: 100%;
     font-size: 0.75rem;
+    margin-bottom: 0.8rem;
   }
 
   .google-icon {
@@ -183,10 +184,11 @@
 
   .other-way-link {
     font-size: 0.9rem;
+    margin-left: 0.4rem;
   }
 
   .auth-form-container {
-    width: 18rem;
+    width: 100%;
   }
 
   .previous-btn {
@@ -202,7 +204,7 @@
   }
 
   .auth-form {
-    width: 18rem;
+    width: 100%;
   }
 
   .auth-form .label {

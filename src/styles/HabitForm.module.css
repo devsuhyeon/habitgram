@@ -36,7 +36,6 @@
 .color {
   width: 2rem;
   height: 2rem;
-  background-color: aquamarine;
   margin: 0.6rem;
   border-radius: 50%;
 }
@@ -108,23 +107,38 @@
   color: var(--color-black);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .new-habit-form-container {
-    width: 26rem;
+    width: 100%;
     height: auto;
     background-color: var(--color-white);
     border-radius: var(--size-border-radius-large);
-    padding: 2.5rem 3rem;
+    padding: 1.8rem;
   }
 
   .new-habit-title {
     font-size: var(--font-small);
     font-weight: var(--weight-semi-bold);
-    margin-bottom: 1.6rem;
+    text-align: center;
+    margin-bottom: 1.2rem;
     user-select: none;
   }
 
   .new-habit-form .label {
     font-size: var(--font-tiny);
+  }
+
+  .new-habit-form .input {
+    margin-bottom: 1.2rem;
+  }
+
+  .colors {
+    margin-bottom: 1.2rem;
+  }
+
+  .color {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.4rem;
   }
 }

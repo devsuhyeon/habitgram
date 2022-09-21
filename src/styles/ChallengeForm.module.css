@@ -80,14 +80,16 @@
   color: var(--color-black);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .challenge-form-container {
-    width: 26rem;
-    padding: 2.2rem 3.2rem;
+    width: 100%;
+    padding: 1.8rem;
   }
 
   .challenge-form-title {
     font-size: var(--font-small);
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   .challenge-form .label {
@@ -103,10 +105,10 @@
   }
 
   .challenge-form .date {
-    width: 9rem;
+    width: 48%;
   }
 
   .challenge-form .btns {
-    margin-top: 1.4rem;
+    margin-top: 1rem;
   }
 }

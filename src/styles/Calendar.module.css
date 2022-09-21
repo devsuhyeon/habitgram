@@ -149,3 +149,9 @@
 .selected.pink {
   background-color: var(--color-dark-pink);
 }
+
+@media screen and (max-width: 480px) {
+  .calendar {
+    margin-top: 0.6rem;
+  }
+}

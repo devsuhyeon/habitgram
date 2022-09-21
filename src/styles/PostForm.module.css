@@ -102,15 +102,16 @@
   color: var(--color-black);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .post-form-container {
-    width: 28rem;
-    padding: 2.2rem 2.8rem;
+    width: 100%;
+    padding: 1.8rem;
   }
 
   .post-form-title {
     font-size: var(--font-small);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
   .post-form label {
@@ -118,6 +119,6 @@
   }
 
   .post-form .comment {
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.2rem;
   }
 }

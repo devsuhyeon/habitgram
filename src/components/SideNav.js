@@ -43,6 +43,9 @@ const SideNav = ({ userObj }) => {
                 ? `${styles['page-link']} ${styles['page-active']}`
                 : styles['page-link']
             }
+            onClick={(e) => {
+              setIsNavActive(false);
+            }}
           >
             <FiTarget className={styles['page-icon']} />
             <span className={styles['page-title']}>GOAL &amp; REWARD</span>
@@ -56,6 +59,9 @@ const SideNav = ({ userObj }) => {
                 ? `${styles['page-link']} ${styles['page-active']}`
                 : styles['page-link']
             }
+            onClick={(e) => {
+              setIsNavActive(false);
+            }}
           >
             <BsCalendarWeek className={styles['page-icon']} />
             <span className={styles['page-title']}>HABIT</span>
@@ -69,6 +75,9 @@ const SideNav = ({ userObj }) => {
                 ? `${styles['page-link']} ${styles['page-active']}`
                 : styles['page-link']
             }
+            onClick={(e) => {
+              setIsNavActive(false);
+            }}
           >
             <FiUsers className={styles['page-icon']} />
             <span className={styles['page-title']}>CHALLENGE</span>
@@ -82,6 +91,9 @@ const SideNav = ({ userObj }) => {
                 ? `${styles['page-link']} ${styles['page-active']}`
                 : styles['page-link']
             }
+            onClick={(e) => {
+              setIsNavActive(false);
+            }}
           >
             <FiUser className={styles['page-icon']} />
             <span className={styles['page-title']}>MY PAGE</span>

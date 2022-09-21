@@ -123,10 +123,41 @@
   color: var(--color-dark-pink);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .habit-card {
-    width: 28rem;
+    width: 90%;
     height: auto;
-    padding: 1rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.4rem 0;
+    position: relative;
+  }
+
+  .card-btns {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+
+  .card-btn {
+    font-size: 1.2rem;
+    color: var(--color-medium-grey);
+  }
+
+  .card-contents {
+    flex-direction: column;
+  }
+
+  .card-info {
+    text-align: center;
+  }
+
+  .counts {
+    order: 1;
+  }
+
+  .count {
+    margin-bottom: 0;
   }
 }

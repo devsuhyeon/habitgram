@@ -44,9 +44,6 @@
 }
 
 .challenge-list-categories {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
@@ -101,14 +98,30 @@
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
+  .challenge-list {
+    font-size: 1.4rem;
+    margin-right: 1.4rem;
+  }
+
+  .categories {
+    width: 8=90%;
+    margin: 0 auto;
+  }
+
+  .category {
+    width: 29%;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+  }
+
   .cards-container {
     flex-direction: column;
     align-items: center;
   }
   .cards {
-    justify-content: center;
-    width: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
     order: 1;
   }
 

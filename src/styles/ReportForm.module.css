@@ -78,11 +78,11 @@
   color: var(--color-black);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .report-form-container {
-    width: 26rem;
+    width: 100%;
     height: auto;
-    padding: 2.2rem 2.4rem;
+    padding: 1.8rem;
   }
 
   .report-form-message {
@@ -92,7 +92,8 @@
 
   .report-form-title {
     font-size: var(--font-small);
-    margin-bottom: 1.6rem;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   .report-form label {
@@ -100,6 +101,6 @@
   }
 
   .report-form .input {
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
   }
 }

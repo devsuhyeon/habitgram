@@ -126,13 +126,24 @@ p {
   margin: 3rem 6rem;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
+  :root {
+    /* Font size */
+    --font-huge: 2rem;
+    --font-large: 1.8rem;
+    --font-medium: 1.4rem;
+    --font-regular: 1rem;
+    --font-small: 0.9rem;
+    --font-tiny: 0.85rem;
+    --font-micro: 0.8rem;
+  }
+
   #root {
     flex-direction: column;
   }
 
   .main-page {
-    width: 90vw;
+    padding: 1rem;
     padding-top: 5rem;
     margin: 0 auto;
   }

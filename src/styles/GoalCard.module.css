@@ -172,7 +172,14 @@
   font-size: 0.8rem;
   font-weight: var(--weight-medium);
 }
+
 .edit-form-input {
   height: 1.25rem;
   margin-bottom: 0.4rem;
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    margin-right: 0;
+  }
 }

@@ -95,7 +95,7 @@ const ChallengeGroup = ({ userObj }) => {
             >
               <HiOutlineChevronLeft />
             </Link>
-            <h2>{challengeObj.title}</h2>
+            <h2 className={styles['header-title']}>{challengeObj.title}</h2>
           </div>
           <div className={styles['challenge-info']}>
             <div>

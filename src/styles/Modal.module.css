@@ -32,3 +32,9 @@
     margin-top: 0;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+  }
+}

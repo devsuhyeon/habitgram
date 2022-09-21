@@ -55,7 +55,9 @@ const MyChallenge = ({ userObj }) => {
         <Link to="/challenge" className={styles['previous-btn']}>
           <HiOutlineChevronLeft />
         </Link>
-        <h2>{userObj.displayName}'s Challenge</h2>
+        <h2 className={styles['header-title']}>
+          {userObj.displayName}'s Challenge
+        </h2>
       </div>
       <section className={styles['challenge-list']}>
         <div>
@@ -82,7 +84,12 @@ const MyChallenge = ({ userObj }) => {
                   challengeObj={userChallenge}
                   onCardClick={onCardClick}
                 />
-                <div className={styles['days-left']}>
+                <div
+                  className={styles['days-left']}
+                  onClick={() => {
+                    onCardClick(userChallenge);
+                  }}
+                >
                   {getDaysLeft(userChallenge)}
                 </div>
               </div>

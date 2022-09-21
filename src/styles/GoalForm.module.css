@@ -103,18 +103,24 @@
   color: var(--color-black);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .goal-form-container {
-    width: 26rem;
+    width: 100%;
     height: auto;
-    padding: 2.5rem 3rem;
+    padding: 1.8rem;
   }
 
   .goal-form-title {
     font-size: var(--font-small);
+    text-align: center;
+    margin-bottom: 1.2rem;
   }
 
   .goal-form .label {
     font-size: var(--font-micro);
+  }
+
+  .goal-form .btns {
+    margin-top: 1rem;
   }
 }

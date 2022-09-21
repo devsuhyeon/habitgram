@@ -52,3 +52,9 @@
   top: 2.4rem;
   right: 0.2rem;
 }
+
+@media screen and (max-width: 480px) {
+  .card {
+    margin-right: 0;
+  }
+}

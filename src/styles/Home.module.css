@@ -63,7 +63,6 @@
 
 .header .content {
   max-width: 26rem;
-  padding-bottom: 4rem;
   margin-right: 5rem;
 }
 
@@ -238,10 +237,10 @@
   font-size: var(--font-tiny);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .nav {
     height: 3rem;
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 
   .logo {
@@ -259,14 +258,15 @@
   .header {
     width: 50rem;
     flex-direction: column;
+    justify-content: space-evenly;
     padding: 6rem 2rem 5rem;
   }
 
   .header .content {
     order: 2;
-    width: 20rem;
-    padding-bottom: 2rem;
+    width: 100%;
     text-align: center;
+    margin-right: 0;
   }
 
   .header .title {
@@ -285,8 +285,7 @@
 
   .header img {
     order: 1;
-    width: 16.5rem;
-    padding-right: 0;
+    width: 90%;
   }
 
   .recommend {
@@ -297,6 +296,7 @@
   .recommend .title {
     font-size: var(--font-medium);
     margin-bottom: 2.6rem;
+    text-align: center;
   }
 
   .recommend .items {
@@ -360,6 +360,7 @@
 
   .goal img {
     width: 15rem;
+    margin-right: 0;
   }
 
   .progress img {
@@ -368,6 +369,7 @@
 
   .challenge img {
     width: 18rem;
+    margin-right: 0;
   }
 
   .post img {
@@ -376,7 +378,7 @@
 
   .footer {
     height: 10rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 
   .footer .logo-contact {
