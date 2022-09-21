@@ -111,3 +111,5 @@ Most of the existing habit tracking platforms were created for personal use. A f
 - How to handle routing in a single page application
 - Experienced in Firebase
 - Experienced in Promise (async/await)
+- Implemented a calendar with multiple date selection without any library
+- Responsive web design optimized for mobile devices
